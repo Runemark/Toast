@@ -1,0 +1,4 @@
+1-size:short,layer:terrain,obstacle:false,texture:floor1a,sideTexture:floor1c,micro:floor1x
+2-size:short,layer:terrain,obstacle:false,texture:floor2a,sideTexture:floor1c,micro:floor2x
+3-size:tall,layer:terrain,obstacle:true,texture:wall1c,topTexture:wall1b,extendedSideTexture:wall1d,micro:wall1x
+4-size:tall,layer:terrain,obstacle:true,texture:wall2c,topTexture:wall2b,extendedSideTexture:wall2d,micro:wall2x

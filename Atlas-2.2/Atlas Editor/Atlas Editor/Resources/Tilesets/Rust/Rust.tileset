@@ -1,0 +1,8 @@
+1-size:short,layer:terrain,obstacle:false,texture:floor1a,sideTexture:floor1b,micro:floor1x
+2-size:short,layer:terrain,obstacle:false,texture:floor2a,sideTexture:floor1b,micro:floor2x
+3-size:tall,layer:terrain,alignment:vertical,obstacle:true,texture:wall_vert1a,topTexture:wall_vert1c,sideTexture:wall_vert1b,extendedSideTexture:wall_vert1d,micro:floor1x
+4-size:tall,layer:terrain,obstacle:true,texture:wall_horiz1a,topTexture:wall_horiz1c,extendedSideTexture:wall_horiz1d,micro:floor1x
+5-size:tall,layer:terrain,obstacle:true,texture:wall_corner1a,topTexture:wall_corner1c,extendedSideTexture:wall_corner1d,micro:floor1x
+6-size:tall,layer:terrain,obstacle:true,texture:block_1a,topTexture:block_1c,extendedSideTexture:block_1d,micro:floor1x
+7-size:tall,layer:doodad,obstacle:true,texture:pot1a,topTexture:pot1c,micro:floor1x
+8-size:tall,layer:doodad,obstacle:true,texture:pot2a,topTexture:pot2c,micro:floor1x

@@ -1,0 +1,893 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C10E3ACD1C862C38009C77DE /* StyleGuideIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3ACC1C862C38009C77DE /* StyleGuideIO.swift */; };
+		C11229371C74B34600107D5E /* TileMapIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11229361C74B34600107D5E /* TileMapIO.swift */; };
+		C12BED591C3B270E007F83F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12BED571C3B270E007F83F4 /* Main.storyboard */; };
+		C12BED5B1C3B270E007F83F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12BED5A1C3B270E007F83F4 /* Assets.xcassets */; };
+		C12BED5E1C3B270E007F83F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12BED5C1C3B270E007F83F4 /* LaunchScreen.storyboard */; };
+		C12BED691C3B270F007F83F4 /* Atlas_EditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12BED681C3B270F007F83F4 /* Atlas_EditorTests.swift */; };
+		C12F212B1C7ECC8100B8BA5A /* LKAnalysisTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F212A1C7ECC8100B8BA5A /* LKAnalysisTask.swift */; };
+		C12F212D1C7ED38C00B8BA5A /* LKLoadMapTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F212C1C7ED38C00B8BA5A /* LKLoadMapTask.swift */; };
+		C12F212F1C80218100B8BA5A /* LKDisplayMapTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F212E1C80218100B8BA5A /* LKDisplayMapTask.swift */; };
+		C12F21321C80F37E00B8BA5A /* Fenrir.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F21311C80F37E00B8BA5A /* Fenrir.swift */; };
+		C12F21341C80F74500B8BA5A /* FRDensityModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F21331C80F74500B8BA5A /* FRDensityModule.swift */; };
+		C12F21361C810E0B00B8BA5A /* FRSkeletonModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F21351C810E0B00B8BA5A /* FRSkeletonModule.swift */; };
+		C12F21381C8110CF00B8BA5A /* OneshotAnalysisScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F21371C8110CF00B8BA5A /* OneshotAnalysisScene.swift */; };
+		C131166B1C3B29360025BFD7 /* CollaborateScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C131166A1C3B29360025BFD7 /* CollaborateScene.swift */; };
+		C13116731C3B29480025BFD7 /* ACEaseUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C131166C1C3B29480025BFD7 /* ACEaseUtility.swift */; };
+		C13116741C3B29480025BFD7 /* AngleUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C131166D1C3B29480025BFD7 /* AngleUtility.swift */; };
+		C13116751C3B29480025BFD7 /* ColorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C131166E1C3B29480025BFD7 /* ColorUtility.swift */; };
+		C13116761C3B29480025BFD7 /* IntUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C131166F1C3B29480025BFD7 /* IntUtility.swift */; };
+		C13116771C3B29480025BFD7 /* RandomUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13116701C3B29480025BFD7 /* RandomUtility.swift */; };
+		C13116781C3B29480025BFD7 /* SKSpriteNodeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13116711C3B29480025BFD7 /* SKSpriteNodeUtility.swift */; };
+		C13116791C3B29480025BFD7 /* UserDefaultsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13116721C3B29480025BFD7 /* UserDefaultsUtility.swift */; };
+		C136CBB01C5AE68E003F701A /* Collaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C136CBAF1C5AE68E003F701A /* Collaborator.swift */; };
+		C13A501B1C4E8F6D00D9DF45 /* NetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A501A1C4E8F6D00D9DF45 /* NetKit.swift */; };
+		C13A50271C4E931900D9DF45 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A50261C4E931900D9DF45 /* NetworkController.swift */; };
+		C13A505F1C4EBE6300D9DF45 /* PanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A505E1C4EBE6300D9DF45 /* PanController.swift */; };
+		C13A50611C4EC63100D9DF45 /* GameSceneInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A50601C4EC63100D9DF45 /* GameSceneInteractionController.swift */; };
+		C1436D5C1C7393570024B603 /* Crypt.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C1436D5A1C7393570024B603 /* Crypt.atlas */; };
+		C1436D5D1C7393570024B603 /* Crypt.tileset in Resources */ = {isa = PBXBuildFile; fileRef = C1436D5B1C7393570024B603 /* Crypt.tileset */; };
+		C1436D5F1C7399290024B603 /* AnalysisScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1436D5E1C7399290024B603 /* AnalysisScene.swift */; };
+		C1436D611C73992F0024B603 /* EditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1436D601C73992F0024B603 /* EditorScene.swift */; };
+		C1436D631C7399900024B603 /* EditorSceneInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1436D621C7399900024B603 /* EditorSceneInteractionController.swift */; };
+		C1436D651C739D230024B603 /* TilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1436D641C739D230024B603 /* TilePageView.swift */; };
+		C14A32331C77930D000D3331 /* Odin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A32321C77930D000D3331 /* Odin.swift */; };
+		C14A32361C77987B000D3331 /* ACInitializeMapLayerTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A32351C77987B000D3331 /* ACInitializeMapLayerTask.swift */; };
+		C14A323A1C77A7FD000D3331 /* ACTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A32391C77A7FD000D3331 /* ACTask.swift */; };
+		C14A323C1C77A882000D3331 /* ACTaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A323B1C77A882000D3331 /* ACTaskList.swift */; };
+		C14A9FCA1C76A8A800AEEE87 /* AnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A9FC91C76A8A800AEEE87 /* AnalysisView.swift */; };
+		C14A9FCC1C76D38B00AEEE87 /* AnalysisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A9FCB1C76D38B00AEEE87 /* AnalysisModel.swift */; };
+		C14C5F301C813B9E004C264E /* FRDensitySubdivisionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C5F2F1C813B9E004C264E /* FRDensitySubdivisionModule.swift */; };
+		C14C5F321C821BA6004C264E /* FRDynamicRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C5F311C821BA6004C264E /* FRDynamicRegion.swift */; };
+		C14C5F341C825481004C264E /* FRContentTraversalModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C5F331C825481004C264E /* FRContentTraversalModule.swift */; };
+		C152CBFE1C3D7DA400323B85 /* TileMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C152CBFD1C3D7DA400323B85 /* TileMapView.swift */; };
+		C152CC001C3DAEFA00323B85 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C152CBFF1C3DAEFA00323B85 /* TileView.swift */; };
+		C15FF2211C860ABB00CF1D85 /* FRStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15FF2201C860ABB00CF1D85 /* FRStyleGuide.swift */; };
+		C19D42FF1C5AB8760040C11E /* CollaboratorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */; };
+		C19D43011C5ABA3C0040C11E /* CollaboratorStatusPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */; };
+		C19FB0371C3C288000414CFA /* TilesetIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB0351C3C288000414CFA /* TilesetIO.swift */; };
+		C19FB03A1C3C28A500414CFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB0381C3C28A500414CFA /* AppDelegate.swift */; };
+		C19FB03B1C3C28A500414CFA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB0391C3C28A500414CFA /* GameViewController.swift */; };
+		C19FB0401C3C2A7000414CFA /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB03E1C3C2A7000414CFA /* Coordinate.swift */; };
+		C19FB0411C3C2A7000414CFA /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB03F1C3C2A7000414CFA /* Queue.swift */; };
+		C19FB0461C3C2A8B00414CFA /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB0431C3C2A8B00414CFA /* TileMap.swift */; };
+		C19FB0471C3C2A8B00414CFA /* Tileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB0441C3C2A8B00414CFA /* Tileset.swift */; };
+		C19FB0491C3C2AC300414CFA /* Rust.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C19FB0481C3C2AC300414CFA /* Rust.atlas */; };
+		C19FB04B1C3C2BD800414CFA /* Rust.tileset in Resources */ = {isa = PBXBuildFile; fileRef = C19FB04A1C3C2BD800414CFA /* Rust.tileset */; };
+		C19FB04D1C3C2E5A00414CFA /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB04C1C3C2E5A00414CFA /* FileIO.swift */; };
+		C1B193181C5026B30013BB59 /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B193171C5026B30013BB59 /* square.png */; };
+		C1B281801C641C570060CE26 /* MentalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B2817F1C641C570060CE26 /* MentalModel.swift */; };
+		C1B281821C641C970060CE26 /* AtomicMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B281811C641C970060CE26 /* AtomicMap.swift */; };
+		C1B2E8321C44292100F597B1 /* TilesetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B2E8311C44292100F597B1 /* TilesetData.swift */; };
+		C1C512B71C78F90A00B952EF /* ACShapeDensityTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C512B61C78F90A00B952EF /* ACShapeDensityTask.swift */; };
+		C1C9A5CE1C84AC5200D7E30D /* FRRegionClusterModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9A5CD1C84AC5200D7E30D /* FRRegionClusterModule.swift */; };
+		C1C9A5D01C84EF4100D7E30D /* FRClusterModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9A5CF1C84EF4100D7E30D /* FRClusterModule.swift */; };
+		C1C9A5D21C84F84E00D7E30D /* FRRectSimilarityModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9A5D11C84F84E00D7E30D /* FRRectSimilarityModule.swift */; };
+		C1CAB0E11C5BCD4A00003FF2 /* GenerateScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAB0E01C5BCD4A00003FF2 /* GenerateScene.swift */; };
+		C1CAB0E31C5BFC6200003FF2 /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAB0E21C5BFC6200003FF2 /* IntroScene.swift */; };
+		C1CAB0E51C5BFCB700003FF2 /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAB0E41C5BFCB700003FF2 /* SimpleButton.swift */; };
+		C1CAB0E91C5C00C200003FF2 /* collaborate.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CAB0E81C5C00C200003FF2 /* collaborate.png */; };
+		C1CAB0EB1C5C029300003FF2 /* generate.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CAB0EA1C5C029300003FF2 /* generate.png */; };
+		C1CAB0ED1C5C029800003FF2 /* analyze.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CAB0EC1C5C029800003FF2 /* analyze.png */; };
+		C1CAB0F01C5C0E2A00003FF2 /* Atlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAB0EF1C5C0E2A00003FF2 /* Atlas.swift */; };
+		C1CAB0F41C5C35B800003FF2 /* Matrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAB0F31C5C35B800003FF2 /* Matrix2D.swift */; };
+		C1CB630D1C7E3EB40059342B /* Loki.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CB630C1C7E3EB40059342B /* Loki.swift */; };
+		C1CB630F1C7E3ED10059342B /* LKAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CB630E1C7E3ED10059342B /* LKAnalysisView.swift */; };
+		C1CB63111C7E97E80059342B /* LKTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CB63101C7E97E80059342B /* LKTask.swift */; };
+		C1CE0F321C7CAD3E0012B972 /* DensityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CE0F311C7CAD3E0012B972 /* DensityMap.swift */; };
+		C1CE0F381C7CDF570012B972 /* SkeletonMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CE0F371C7CDF570012B972 /* SkeletonMap.swift */; };
+		C1D298F01C73CF5600AEFE1B /* TileSelectionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D298EF1C73CF5600AEFE1B /* TileSelectionPanel.swift */; };
+		C1E711361C597E0D00C90917 /* NetworkDataIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E711351C597E0D00C90917 /* NetworkDataIO.swift */; };
+		C1E7113A1C59C97000C90917 /* SynchronizedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E711391C59C97000C90917 /* SynchronizedArray.swift */; };
+		C1E8FEE71C56FF7100C66630 /* ChangeQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8FEE61C56FF7100C66630 /* ChangeQueue.swift */; };
+		C1E8FEE91C5716A000C66630 /* ChangeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8FEE81C5716A000C66630 /* ChangeIndicator.swift */; };
+		C1E8FEEB1C571E0900C66630 /* indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E8FEEA1C571E0900C66630 /* indicator.png */; };
+		C1E8FEED1C571FCF00C66630 /* dull_glow.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E8FEEC1C571FCF00C66630 /* dull_glow.png */; };
+		C1E8FEEF1C57214600C66630 /* bright_square.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E8FEEE1C57214600C66630 /* bright_square.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C12BED651C3B270F007F83F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C12BED441C3B270E007F83F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C12BED4B1C3B270E007F83F4;
+			remoteInfo = "Atlas Editor";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C10E3ACC1C862C38009C77DE /* StyleGuideIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuideIO.swift; sourceTree = "<group>"; };
+		C11229361C74B34600107D5E /* TileMapIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMapIO.swift; sourceTree = "<group>"; };
+		C12BED4C1C3B270E007F83F4 /* Atlas Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Atlas Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C12BED581C3B270E007F83F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C12BED5A1C3B270E007F83F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C12BED5D1C3B270E007F83F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C12BED5F1C3B270E007F83F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C12BED641C3B270F007F83F4 /* Atlas EditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Atlas EditorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C12BED681C3B270F007F83F4 /* Atlas_EditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atlas_EditorTests.swift; sourceTree = "<group>"; };
+		C12BED6A1C3B270F007F83F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C12F212A1C7ECC8100B8BA5A /* LKAnalysisTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LKAnalysisTask.swift; sourceTree = "<group>"; };
+		C12F212C1C7ED38C00B8BA5A /* LKLoadMapTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LKLoadMapTask.swift; sourceTree = "<group>"; };
+		C12F212E1C80218100B8BA5A /* LKDisplayMapTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LKDisplayMapTask.swift; sourceTree = "<group>"; };
+		C12F21311C80F37E00B8BA5A /* Fenrir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fenrir.swift; sourceTree = "<group>"; };
+		C12F21331C80F74500B8BA5A /* FRDensityModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRDensityModule.swift; sourceTree = "<group>"; };
+		C12F21351C810E0B00B8BA5A /* FRSkeletonModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRSkeletonModule.swift; sourceTree = "<group>"; };
+		C12F21371C8110CF00B8BA5A /* OneshotAnalysisScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneshotAnalysisScene.swift; sourceTree = "<group>"; };
+		C131166A1C3B29360025BFD7 /* CollaborateScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollaborateScene.swift; path = Code/Scenes/CollaborateScene.swift; sourceTree = "<group>"; };
+		C131166C1C3B29480025BFD7 /* ACEaseUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ACEaseUtility.swift; path = Code/Utility/ACEaseUtility.swift; sourceTree = "<group>"; };
+		C131166D1C3B29480025BFD7 /* AngleUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AngleUtility.swift; path = Code/Utility/AngleUtility.swift; sourceTree = "<group>"; };
+		C131166E1C3B29480025BFD7 /* ColorUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorUtility.swift; path = Code/Utility/ColorUtility.swift; sourceTree = "<group>"; };
+		C131166F1C3B29480025BFD7 /* IntUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntUtility.swift; path = Code/Utility/IntUtility.swift; sourceTree = "<group>"; };
+		C13116701C3B29480025BFD7 /* RandomUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomUtility.swift; path = Code/Utility/RandomUtility.swift; sourceTree = "<group>"; };
+		C13116711C3B29480025BFD7 /* SKSpriteNodeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKSpriteNodeUtility.swift; path = Code/Utility/SKSpriteNodeUtility.swift; sourceTree = "<group>"; };
+		C13116721C3B29480025BFD7 /* UserDefaultsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsUtility.swift; path = Code/Utility/UserDefaultsUtility.swift; sourceTree = "<group>"; };
+		C136CBAF1C5AE68E003F701A /* Collaborator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collaborator.swift; sourceTree = "<group>"; };
+		C13A501A1C4E8F6D00D9DF45 /* NetKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetKit.swift; path = Network/NetKit.swift; sourceTree = "<group>"; };
+		C13A50261C4E931900D9DF45 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		C13A505E1C4EBE6300D9DF45 /* PanController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanController.swift; sourceTree = "<group>"; };
+		C13A50601C4EC63100D9DF45 /* GameSceneInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneInteractionController.swift; sourceTree = "<group>"; };
+		C1436D5A1C7393570024B603 /* Crypt.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Crypt.atlas; path = Resources/Tilesets/Crypt/Crypt.atlas; sourceTree = "<group>"; };
+		C1436D5B1C7393570024B603 /* Crypt.tileset */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Crypt.tileset; path = Resources/Tilesets/Crypt/Crypt.tileset; sourceTree = "<group>"; };
+		C1436D5E1C7399290024B603 /* AnalysisScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisScene.swift; sourceTree = "<group>"; };
+		C1436D601C73992F0024B603 /* EditorScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorScene.swift; sourceTree = "<group>"; };
+		C1436D621C7399900024B603 /* EditorSceneInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorSceneInteractionController.swift; sourceTree = "<group>"; };
+		C1436D641C739D230024B603 /* TilePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilePageView.swift; sourceTree = "<group>"; };
+		C14A32321C77930D000D3331 /* Odin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Odin.swift; path = "Atlas Editor/Code/Odin/Odin.swift"; sourceTree = "<group>"; };
+		C14A32351C77987B000D3331 /* ACInitializeMapLayerTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACInitializeMapLayerTask.swift; sourceTree = "<group>"; };
+		C14A32391C77A7FD000D3331 /* ACTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTask.swift; sourceTree = "<group>"; };
+		C14A323B1C77A882000D3331 /* ACTaskList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTaskList.swift; sourceTree = "<group>"; };
+		C14A9FC91C76A8A800AEEE87 /* AnalysisView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisView.swift; sourceTree = "<group>"; };
+		C14A9FCB1C76D38B00AEEE87 /* AnalysisModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisModel.swift; sourceTree = "<group>"; };
+		C14C5F2F1C813B9E004C264E /* FRDensitySubdivisionModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRDensitySubdivisionModule.swift; sourceTree = "<group>"; };
+		C14C5F311C821BA6004C264E /* FRDynamicRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRDynamicRegion.swift; sourceTree = "<group>"; };
+		C14C5F331C825481004C264E /* FRContentTraversalModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRContentTraversalModule.swift; sourceTree = "<group>"; };
+		C152CBFD1C3D7DA400323B85 /* TileMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMapView.swift; sourceTree = "<group>"; };
+		C152CBFF1C3DAEFA00323B85 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		C15FF2201C860ABB00CF1D85 /* FRStyleGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRStyleGuide.swift; sourceTree = "<group>"; };
+		C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorStatusView.swift; sourceTree = "<group>"; };
+		C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorStatusPanel.swift; sourceTree = "<group>"; };
+		C19FB0351C3C288000414CFA /* TilesetIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TilesetIO.swift; path = Code/IO/TilesetIO.swift; sourceTree = "<group>"; };
+		C19FB0381C3C28A500414CFA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Boilerplate/AppDelegate.swift; sourceTree = "<group>"; };
+		C19FB0391C3C28A500414CFA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Boilerplate/GameViewController.swift; sourceTree = "<group>"; };
+		C19FB03E1C3C2A7000414CFA /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinate.swift; path = "Code/Data Structures/Coordinate.swift"; sourceTree = "<group>"; };
+		C19FB03F1C3C2A7000414CFA /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = "Code/Data Structures/Queue.swift"; sourceTree = "<group>"; };
+		C19FB0431C3C2A8B00414CFA /* TileMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileMap.swift; path = Code/Model/TileMap.swift; sourceTree = "<group>"; };
+		C19FB0441C3C2A8B00414CFA /* Tileset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tileset.swift; path = Code/Model/Tileset.swift; sourceTree = "<group>"; };
+		C19FB0481C3C2AC300414CFA /* Rust.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Rust.atlas; path = Resources/Tilesets/Rust/Rust.atlas; sourceTree = "<group>"; };
+		C19FB04A1C3C2BD800414CFA /* Rust.tileset */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Rust.tileset; path = Resources/Tilesets/Rust/Rust.tileset; sourceTree = "<group>"; };
+		C19FB04C1C3C2E5A00414CFA /* FileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIO.swift; sourceTree = "<group>"; };
+		C1B193171C5026B30013BB59 /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square.png; path = Resources/Common/square.png; sourceTree = "<group>"; };
+		C1B2817F1C641C570060CE26 /* MentalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalModel.swift; sourceTree = "<group>"; };
+		C1B281811C641C970060CE26 /* AtomicMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomicMap.swift; sourceTree = "<group>"; };
+		C1B2E8311C44292100F597B1 /* TilesetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilesetData.swift; sourceTree = "<group>"; };
+		C1C512B61C78F90A00B952EF /* ACShapeDensityTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACShapeDensityTask.swift; sourceTree = "<group>"; };
+		C1C9A5CD1C84AC5200D7E30D /* FRRegionClusterModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRRegionClusterModule.swift; sourceTree = "<group>"; };
+		C1C9A5CF1C84EF4100D7E30D /* FRClusterModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRClusterModule.swift; sourceTree = "<group>"; };
+		C1C9A5D11C84F84E00D7E30D /* FRRectSimilarityModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRRectSimilarityModule.swift; sourceTree = "<group>"; };
+		C1CAB0E01C5BCD4A00003FF2 /* GenerateScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateScene.swift; sourceTree = "<group>"; };
+		C1CAB0E21C5BFC6200003FF2 /* IntroScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
+		C1CAB0E41C5BFCB700003FF2 /* SimpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButton.swift; sourceTree = "<group>"; };
+		C1CAB0E81C5C00C200003FF2 /* collaborate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = collaborate.png; path = Resources/Interface/collaborate.png; sourceTree = "<group>"; };
+		C1CAB0EA1C5C029300003FF2 /* generate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = generate.png; path = Resources/Interface/generate.png; sourceTree = "<group>"; };
+		C1CAB0EC1C5C029800003FF2 /* analyze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = analyze.png; path = Resources/Interface/analyze.png; sourceTree = "<group>"; };
+		C1CAB0EF1C5C0E2A00003FF2 /* Atlas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atlas.swift; sourceTree = "<group>"; };
+		C1CAB0F31C5C35B800003FF2 /* Matrix2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix2D.swift; sourceTree = "<group>"; };
+		C1CB630C1C7E3EB40059342B /* Loki.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loki.swift; sourceTree = "<group>"; };
+		C1CB630E1C7E3ED10059342B /* LKAnalysisView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LKAnalysisView.swift; sourceTree = "<group>"; };
+		C1CB63101C7E97E80059342B /* LKTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LKTask.swift; sourceTree = "<group>"; };
+		C1CE0F311C7CAD3E0012B972 /* DensityMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DensityMap.swift; sourceTree = "<group>"; };
+		C1CE0F371C7CDF570012B972 /* SkeletonMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonMap.swift; sourceTree = "<group>"; };
+		C1D298EF1C73CF5600AEFE1B /* TileSelectionPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileSelectionPanel.swift; sourceTree = "<group>"; };
+		C1E711351C597E0D00C90917 /* NetworkDataIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataIO.swift; sourceTree = "<group>"; };
+		C1E711391C59C97000C90917 /* SynchronizedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SynchronizedArray.swift; path = "Code/Data Structures/SynchronizedArray.swift"; sourceTree = "<group>"; };
+		C1E8FEE61C56FF7100C66630 /* ChangeQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeQueue.swift; path = "Code/Data Structures/ChangeQueue.swift"; sourceTree = "<group>"; };
+		C1E8FEE81C5716A000C66630 /* ChangeIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeIndicator.swift; sourceTree = "<group>"; };
+		C1E8FEEA1C571E0900C66630 /* indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = indicator.png; path = Resources/Common/indicator.png; sourceTree = "<group>"; };
+		C1E8FEEC1C571FCF00C66630 /* dull_glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dull_glow.png; path = Resources/Common/dull_glow.png; sourceTree = "<group>"; };
+		C1E8FEEE1C57214600C66630 /* bright_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bright_square.png; path = Resources/Common/bright_square.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C12BED491C3B270E007F83F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C12BED611C3B270F007F83F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C12BED431C3B270E007F83F4 = {
+			isa = PBXGroup;
+			children = (
+				C12BED4E1C3B270E007F83F4 /* Atlas Editor */,
+				C12BED671C3B270F007F83F4 /* Atlas EditorTests */,
+				C12BED4D1C3B270E007F83F4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C12BED4D1C3B270E007F83F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C12BED4C1C3B270E007F83F4 /* Atlas Editor.app */,
+				C12BED641C3B270F007F83F4 /* Atlas EditorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C12BED4E1C3B270E007F83F4 /* Atlas Editor */ = {
+			isa = PBXGroup;
+			children = (
+				C13A505D1C4EBE5200D9DF45 /* Interaction */,
+				C13A50181C4E8EA000D9DF45 /* Master Controllers */,
+				C12F21301C80EDB100B8BA5A /* Fenrir (One-Shot Analysis) */,
+				C1CB630B1C7E3E6E0059342B /* Loki (Real-Time Analysis) */,
+				C14A9FCD1C76D3E400AEEE87 /* Odin (Analysis) */,
+				C1CAB0EE1C5C0E1800003FF2 /* Atlas (Generation) */,
+				C1B2E8301C4415EE00F597B1 /* Scenes */,
+				C152CBFC1C3D7D9C00323B85 /* View */,
+				C19FB0311C3C273300414CFA /* Boilerplate */,
+				C13116871C3B3D390025BFD7 /* Model */,
+				C13116801C3B3BD80025BFD7 /* Data Structures */,
+				C131167B1C3B3B870025BFD7 /* IO */,
+				C131167A1C3B29640025BFD7 /* Resources */,
+				C12BED731C3B273F007F83F4 /* Utility */,
+			);
+			path = "Atlas Editor";
+			sourceTree = "<group>";
+		};
+		C12BED671C3B270F007F83F4 /* Atlas EditorTests */ = {
+			isa = PBXGroup;
+			children = (
+				C12BED681C3B270F007F83F4 /* Atlas_EditorTests.swift */,
+				C12BED6A1C3B270F007F83F4 /* Info.plist */,
+			);
+			path = "Atlas EditorTests";
+			sourceTree = "<group>";
+		};
+		C12BED731C3B273F007F83F4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C131166C1C3B29480025BFD7 /* ACEaseUtility.swift */,
+				C131166D1C3B29480025BFD7 /* AngleUtility.swift */,
+				C131166E1C3B29480025BFD7 /* ColorUtility.swift */,
+				C131166F1C3B29480025BFD7 /* IntUtility.swift */,
+				C13116701C3B29480025BFD7 /* RandomUtility.swift */,
+				C13116711C3B29480025BFD7 /* SKSpriteNodeUtility.swift */,
+				C13116721C3B29480025BFD7 /* UserDefaultsUtility.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		C12F21301C80EDB100B8BA5A /* Fenrir (One-Shot Analysis) */ = {
+			isa = PBXGroup;
+			children = (
+				C12F21311C80F37E00B8BA5A /* Fenrir.swift */,
+				C12F21331C80F74500B8BA5A /* FRDensityModule.swift */,
+				C12F21351C810E0B00B8BA5A /* FRSkeletonModule.swift */,
+				C14C5F2F1C813B9E004C264E /* FRDensitySubdivisionModule.swift */,
+				C14C5F331C825481004C264E /* FRContentTraversalModule.swift */,
+				C1C9A5CD1C84AC5200D7E30D /* FRRegionClusterModule.swift */,
+				C1C9A5D11C84F84E00D7E30D /* FRRectSimilarityModule.swift */,
+				C1C9A5CF1C84EF4100D7E30D /* FRClusterModule.swift */,
+				C14C5F311C821BA6004C264E /* FRDynamicRegion.swift */,
+				C15FF2201C860ABB00CF1D85 /* FRStyleGuide.swift */,
+			);
+			name = "Fenrir (One-Shot Analysis)";
+			sourceTree = "<group>";
+		};
+		C131167A1C3B29640025BFD7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1CAB0E71C5C00BA00003FF2 /* Interface */,
+				C1B193161C5026AE0013BB59 /* Common */,
+				C19FB0321C3C284700414CFA /* Tilesets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C131167B1C3B3B870025BFD7 /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				C10E3ACC1C862C38009C77DE /* StyleGuideIO.swift */,
+				C11229361C74B34600107D5E /* TileMapIO.swift */,
+				C19FB0351C3C288000414CFA /* TilesetIO.swift */,
+				C19FB04C1C3C2E5A00414CFA /* FileIO.swift */,
+			);
+			name = IO;
+			sourceTree = "<group>";
+		};
+		C13116801C3B3BD80025BFD7 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				C1B281811C641C970060CE26 /* AtomicMap.swift */,
+				C19FB03E1C3C2A7000414CFA /* Coordinate.swift */,
+				C1CAB0F31C5C35B800003FF2 /* Matrix2D.swift */,
+				C19FB03F1C3C2A7000414CFA /* Queue.swift */,
+				C1E8FEE61C56FF7100C66630 /* ChangeQueue.swift */,
+				C1E711391C59C97000C90917 /* SynchronizedArray.swift */,
+			);
+			name = "Data Structures";
+			sourceTree = "<group>";
+		};
+		C13116871C3B3D390025BFD7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C19FB0431C3C2A8B00414CFA /* TileMap.swift */,
+				C14A9FCB1C76D38B00AEEE87 /* AnalysisModel.swift */,
+				C1CE0F311C7CAD3E0012B972 /* DensityMap.swift */,
+				C1CE0F371C7CDF570012B972 /* SkeletonMap.swift */,
+				C19FB0441C3C2A8B00414CFA /* Tileset.swift */,
+				C1B2E8311C44292100F597B1 /* TilesetData.swift */,
+				C136CBAF1C5AE68E003F701A /* Collaborator.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C13A50181C4E8EA000D9DF45 /* Master Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C13A50191C4E8EAB00D9DF45 /* Networking */,
+			);
+			name = "Master Controllers";
+			sourceTree = "<group>";
+		};
+		C13A50191C4E8EAB00D9DF45 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C13A501A1C4E8F6D00D9DF45 /* NetKit.swift */,
+				C13A50261C4E931900D9DF45 /* NetworkController.swift */,
+				C1E711351C597E0D00C90917 /* NetworkDataIO.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		C13A505D1C4EBE5200D9DF45 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				C13A505E1C4EBE6300D9DF45 /* PanController.swift */,
+				C13A50601C4EC63100D9DF45 /* GameSceneInteractionController.swift */,
+				C1436D621C7399900024B603 /* EditorSceneInteractionController.swift */,
+			);
+			name = Interaction;
+			sourceTree = "<group>";
+		};
+		C1436D591C73934C0024B603 /* Crypt */ = {
+			isa = PBXGroup;
+			children = (
+				C1436D5A1C7393570024B603 /* Crypt.atlas */,
+				C1436D5B1C7393570024B603 /* Crypt.tileset */,
+			);
+			name = Crypt;
+			sourceTree = "<group>";
+		};
+		C14A32341C779850000D3331 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				C14A32351C77987B000D3331 /* ACInitializeMapLayerTask.swift */,
+				C1C512B61C78F90A00B952EF /* ACShapeDensityTask.swift */,
+				C14A32391C77A7FD000D3331 /* ACTask.swift */,
+				C14A323B1C77A882000D3331 /* ACTaskList.swift */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		C14A9FCD1C76D3E400AEEE87 /* Odin (Analysis) */ = {
+			isa = PBXGroup;
+			children = (
+				C14A32321C77930D000D3331 /* Odin.swift */,
+				C14A32341C779850000D3331 /* Tasks */,
+			);
+			name = "Odin (Analysis)";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C152CBFC1C3D7D9C00323B85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C152CBFD1C3D7DA400323B85 /* TileMapView.swift */,
+				C14A9FC91C76A8A800AEEE87 /* AnalysisView.swift */,
+				C152CBFF1C3DAEFA00323B85 /* TileView.swift */,
+				C1E8FEE81C5716A000C66630 /* ChangeIndicator.swift */,
+				C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */,
+				C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */,
+				C1CAB0E41C5BFCB700003FF2 /* SimpleButton.swift */,
+				C1436D641C739D230024B603 /* TilePageView.swift */,
+				C1D298EF1C73CF5600AEFE1B /* TileSelectionPanel.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C19FB0311C3C273300414CFA /* Boilerplate */ = {
+			isa = PBXGroup;
+			children = (
+				C19FB0381C3C28A500414CFA /* AppDelegate.swift */,
+				C19FB0391C3C28A500414CFA /* GameViewController.swift */,
+				C12BED571C3B270E007F83F4 /* Main.storyboard */,
+				C12BED5A1C3B270E007F83F4 /* Assets.xcassets */,
+				C12BED5C1C3B270E007F83F4 /* LaunchScreen.storyboard */,
+				C12BED5F1C3B270E007F83F4 /* Info.plist */,
+			);
+			name = Boilerplate;
+			sourceTree = "<group>";
+		};
+		C19FB0321C3C284700414CFA /* Tilesets */ = {
+			isa = PBXGroup;
+			children = (
+				C1436D591C73934C0024B603 /* Crypt */,
+				C19FB0331C3C284D00414CFA /* Rust */,
+			);
+			name = Tilesets;
+			sourceTree = "<group>";
+		};
+		C19FB0331C3C284D00414CFA /* Rust */ = {
+			isa = PBXGroup;
+			children = (
+				C19FB04A1C3C2BD800414CFA /* Rust.tileset */,
+				C19FB0481C3C2AC300414CFA /* Rust.atlas */,
+			);
+			name = Rust;
+			sourceTree = "<group>";
+		};
+		C1B193161C5026AE0013BB59 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8FEEC1C571FCF00C66630 /* dull_glow.png */,
+				C1E8FEEE1C57214600C66630 /* bright_square.png */,
+				C1E8FEEA1C571E0900C66630 /* indicator.png */,
+				C1B193171C5026B30013BB59 /* square.png */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		C1B2E8301C4415EE00F597B1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C131166A1C3B29360025BFD7 /* CollaborateScene.swift */,
+				C1CAB0E01C5BCD4A00003FF2 /* GenerateScene.swift */,
+				C1436D5E1C7399290024B603 /* AnalysisScene.swift */,
+				C12F21371C8110CF00B8BA5A /* OneshotAnalysisScene.swift */,
+				C1436D601C73992F0024B603 /* EditorScene.swift */,
+				C1CAB0E21C5BFC6200003FF2 /* IntroScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		C1CAB0E71C5C00BA00003FF2 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				C1CAB0EC1C5C029800003FF2 /* analyze.png */,
+				C1CAB0E81C5C00C200003FF2 /* collaborate.png */,
+				C1CAB0EA1C5C029300003FF2 /* generate.png */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		C1CAB0EE1C5C0E1800003FF2 /* Atlas (Generation) */ = {
+			isa = PBXGroup;
+			children = (
+				C1CAB0EF1C5C0E2A00003FF2 /* Atlas.swift */,
+				C1B2817F1C641C570060CE26 /* MentalModel.swift */,
+			);
+			name = "Atlas (Generation)";
+			sourceTree = "<group>";
+		};
+		C1CB630B1C7E3E6E0059342B /* Loki (Real-Time Analysis) */ = {
+			isa = PBXGroup;
+			children = (
+				C1CB630C1C7E3EB40059342B /* Loki.swift */,
+				C1CB630E1C7E3ED10059342B /* LKAnalysisView.swift */,
+				C1CB63101C7E97E80059342B /* LKTask.swift */,
+				C12F212A1C7ECC8100B8BA5A /* LKAnalysisTask.swift */,
+				C12F212C1C7ED38C00B8BA5A /* LKLoadMapTask.swift */,
+				C12F212E1C80218100B8BA5A /* LKDisplayMapTask.swift */,
+			);
+			name = "Loki (Real-Time Analysis)";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C12BED4B1C3B270E007F83F4 /* Atlas Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C12BED6D1C3B270F007F83F4 /* Build configuration list for PBXNativeTarget "Atlas Editor" */;
+			buildPhases = (
+				C12BED481C3B270E007F83F4 /* Sources */,
+				C12BED491C3B270E007F83F4 /* Frameworks */,
+				C12BED4A1C3B270E007F83F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Atlas Editor";
+			productName = "Atlas Editor";
+			productReference = C12BED4C1C3B270E007F83F4 /* Atlas Editor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C12BED631C3B270F007F83F4 /* Atlas EditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C12BED701C3B270F007F83F4 /* Build configuration list for PBXNativeTarget "Atlas EditorTests" */;
+			buildPhases = (
+				C12BED601C3B270F007F83F4 /* Sources */,
+				C12BED611C3B270F007F83F4 /* Frameworks */,
+				C12BED621C3B270F007F83F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C12BED661C3B270F007F83F4 /* PBXTargetDependency */,
+			);
+			name = "Atlas EditorTests";
+			productName = "Atlas EditorTests";
+			productReference = C12BED641C3B270F007F83F4 /* Atlas EditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C12BED441C3B270E007F83F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Dusty Artifact";
+				TargetAttributes = {
+					C12BED4B1C3B270E007F83F4 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					C12BED631C3B270F007F83F4 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = C12BED4B1C3B270E007F83F4;
+					};
+				};
+			};
+			buildConfigurationList = C12BED471C3B270E007F83F4 /* Build configuration list for PBXProject "Atlas Editor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C12BED431C3B270E007F83F4;
+			productRefGroup = C12BED4D1C3B270E007F83F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C12BED4B1C3B270E007F83F4 /* Atlas Editor */,
+				C12BED631C3B270F007F83F4 /* Atlas EditorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C12BED4A1C3B270E007F83F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C12BED5E1C3B270E007F83F4 /* LaunchScreen.storyboard in Resources */,
+				C1E8FEED1C571FCF00C66630 /* dull_glow.png in Resources */,
+				C1CAB0ED1C5C029800003FF2 /* analyze.png in Resources */,
+				C1CAB0E91C5C00C200003FF2 /* collaborate.png in Resources */,
+				C12BED5B1C3B270E007F83F4 /* Assets.xcassets in Resources */,
+				C12BED591C3B270E007F83F4 /* Main.storyboard in Resources */,
+				C19FB04B1C3C2BD800414CFA /* Rust.tileset in Resources */,
+				C1B193181C5026B30013BB59 /* square.png in Resources */,
+				C1CAB0EB1C5C029300003FF2 /* generate.png in Resources */,
+				C1436D5D1C7393570024B603 /* Crypt.tileset in Resources */,
+				C1E8FEEF1C57214600C66630 /* bright_square.png in Resources */,
+				C19FB0491C3C2AC300414CFA /* Rust.atlas in Resources */,
+				C1E8FEEB1C571E0900C66630 /* indicator.png in Resources */,
+				C1436D5C1C7393570024B603 /* Crypt.atlas in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C12BED621C3B270F007F83F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C12BED481C3B270E007F83F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C12F21361C810E0B00B8BA5A /* FRSkeletonModule.swift in Sources */,
+				C13116731C3B29480025BFD7 /* ACEaseUtility.swift in Sources */,
+				C1E7113A1C59C97000C90917 /* SynchronizedArray.swift in Sources */,
+				C12F212D1C7ED38C00B8BA5A /* LKLoadMapTask.swift in Sources */,
+				C1436D631C7399900024B603 /* EditorSceneInteractionController.swift in Sources */,
+				C13A50271C4E931900D9DF45 /* NetworkController.swift in Sources */,
+				C13116761C3B29480025BFD7 /* IntUtility.swift in Sources */,
+				C19FB0411C3C2A7000414CFA /* Queue.swift in Sources */,
+				C1C512B71C78F90A00B952EF /* ACShapeDensityTask.swift in Sources */,
+				C14A32331C77930D000D3331 /* Odin.swift in Sources */,
+				C13116741C3B29480025BFD7 /* AngleUtility.swift in Sources */,
+				C13A505F1C4EBE6300D9DF45 /* PanController.swift in Sources */,
+				C19FB0401C3C2A7000414CFA /* Coordinate.swift in Sources */,
+				C14A323A1C77A7FD000D3331 /* ACTask.swift in Sources */,
+				C12F212F1C80218100B8BA5A /* LKDisplayMapTask.swift in Sources */,
+				C19D43011C5ABA3C0040C11E /* CollaboratorStatusPanel.swift in Sources */,
+				C152CBFE1C3D7DA400323B85 /* TileMapView.swift in Sources */,
+				C1CAB0E11C5BCD4A00003FF2 /* GenerateScene.swift in Sources */,
+				C13116771C3B29480025BFD7 /* RandomUtility.swift in Sources */,
+				C11229371C74B34600107D5E /* TileMapIO.swift in Sources */,
+				C1CB630F1C7E3ED10059342B /* LKAnalysisView.swift in Sources */,
+				C1B2E8321C44292100F597B1 /* TilesetData.swift in Sources */,
+				C1B281821C641C970060CE26 /* AtomicMap.swift in Sources */,
+				C12F21341C80F74500B8BA5A /* FRDensityModule.swift in Sources */,
+				C1E8FEE71C56FF7100C66630 /* ChangeQueue.swift in Sources */,
+				C13116781C3B29480025BFD7 /* SKSpriteNodeUtility.swift in Sources */,
+				C13116791C3B29480025BFD7 /* UserDefaultsUtility.swift in Sources */,
+				C1CAB0E31C5BFC6200003FF2 /* IntroScene.swift in Sources */,
+				C19FB03B1C3C28A500414CFA /* GameViewController.swift in Sources */,
+				C1CB63111C7E97E80059342B /* LKTask.swift in Sources */,
+				C13A501B1C4E8F6D00D9DF45 /* NetKit.swift in Sources */,
+				C12F21381C8110CF00B8BA5A /* OneshotAnalysisScene.swift in Sources */,
+				C1CAB0E51C5BFCB700003FF2 /* SimpleButton.swift in Sources */,
+				C1436D611C73992F0024B603 /* EditorScene.swift in Sources */,
+				C13116751C3B29480025BFD7 /* ColorUtility.swift in Sources */,
+				C1CB630D1C7E3EB40059342B /* Loki.swift in Sources */,
+				C15FF2211C860ABB00CF1D85 /* FRStyleGuide.swift in Sources */,
+				C19FB04D1C3C2E5A00414CFA /* FileIO.swift in Sources */,
+				C19D42FF1C5AB8760040C11E /* CollaboratorStatusView.swift in Sources */,
+				C1C9A5D21C84F84E00D7E30D /* FRRectSimilarityModule.swift in Sources */,
+				C12F212B1C7ECC8100B8BA5A /* LKAnalysisTask.swift in Sources */,
+				C1436D5F1C7399290024B603 /* AnalysisScene.swift in Sources */,
+				C1436D651C739D230024B603 /* TilePageView.swift in Sources */,
+				C1CE0F321C7CAD3E0012B972 /* DensityMap.swift in Sources */,
+				C19FB0371C3C288000414CFA /* TilesetIO.swift in Sources */,
+				C1E711361C597E0D00C90917 /* NetworkDataIO.swift in Sources */,
+				C14A9FCA1C76A8A800AEEE87 /* AnalysisView.swift in Sources */,
+				C19FB0461C3C2A8B00414CFA /* TileMap.swift in Sources */,
+				C19FB03A1C3C28A500414CFA /* AppDelegate.swift in Sources */,
+				C13A50611C4EC63100D9DF45 /* GameSceneInteractionController.swift in Sources */,
+				C131166B1C3B29360025BFD7 /* CollaborateScene.swift in Sources */,
+				C14C5F321C821BA6004C264E /* FRDynamicRegion.swift in Sources */,
+				C12F21321C80F37E00B8BA5A /* Fenrir.swift in Sources */,
+				C14A323C1C77A882000D3331 /* ACTaskList.swift in Sources */,
+				C10E3ACD1C862C38009C77DE /* StyleGuideIO.swift in Sources */,
+				C1D298F01C73CF5600AEFE1B /* TileSelectionPanel.swift in Sources */,
+				C14A9FCC1C76D38B00AEEE87 /* AnalysisModel.swift in Sources */,
+				C1C9A5CE1C84AC5200D7E30D /* FRRegionClusterModule.swift in Sources */,
+				C1B281801C641C570060CE26 /* MentalModel.swift in Sources */,
+				C1CAB0F01C5C0E2A00003FF2 /* Atlas.swift in Sources */,
+				C1CAB0F41C5C35B800003FF2 /* Matrix2D.swift in Sources */,
+				C1C9A5D01C84EF4100D7E30D /* FRClusterModule.swift in Sources */,
+				C136CBB01C5AE68E003F701A /* Collaborator.swift in Sources */,
+				C1E8FEE91C5716A000C66630 /* ChangeIndicator.swift in Sources */,
+				C152CC001C3DAEFA00323B85 /* TileView.swift in Sources */,
+				C1CE0F381C7CDF570012B972 /* SkeletonMap.swift in Sources */,
+				C14C5F341C825481004C264E /* FRContentTraversalModule.swift in Sources */,
+				C14A32361C77987B000D3331 /* ACInitializeMapLayerTask.swift in Sources */,
+				C14C5F301C813B9E004C264E /* FRDensitySubdivisionModule.swift in Sources */,
+				C19FB0471C3C2A8B00414CFA /* Tileset.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C12BED601C3B270F007F83F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C12BED691C3B270F007F83F4 /* Atlas_EditorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C12BED661C3B270F007F83F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C12BED4B1C3B270E007F83F4 /* Atlas Editor */;
+			targetProxy = C12BED651C3B270F007F83F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C12BED571C3B270E007F83F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C12BED581C3B270E007F83F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C12BED5C1C3B270E007F83F4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C12BED5D1C3B270E007F83F4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C12BED6B1C3B270F007F83F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C12BED6C1C3B270F007F83F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C12BED6E1C3B270F007F83F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Atlas Editor/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.byu.Atlas-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C12BED6F1C3B270F007F83F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Atlas Editor/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.byu.Atlas-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C12BED711C3B270F007F83F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Atlas EditorTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.byu.Atlas-EditorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Atlas Editor.app/Atlas Editor";
+			};
+			name = Debug;
+		};
+		C12BED721C3B270F007F83F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Atlas EditorTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.byu.Atlas-EditorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Atlas Editor.app/Atlas Editor";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C12BED471C3B270E007F83F4 /* Build configuration list for PBXProject "Atlas Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C12BED6B1C3B270F007F83F4 /* Debug */,
+				C12BED6C1C3B270F007F83F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C12BED6D1C3B270F007F83F4 /* Build configuration list for PBXNativeTarget "Atlas Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C12BED6E1C3B270F007F83F4 /* Debug */,
+				C12BED6F1C3B270F007F83F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C12BED701C3B270F007F83F4 /* Build configuration list for PBXNativeTarget "Atlas EditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C12BED711C3B270F007F83F4 /* Debug */,
+				C12BED721C3B270F007F83F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C12BED441C3B270E007F83F4 /* Project object */;
+}
