@@ -9,14 +9,13 @@
 import Foundation
 import SpriteKit
 
-class TileMapView : SKNode, DirectMapObserver, AtlasObserver
+class TileMapView : SKNode, DirectMapObserver
 {
     //////////////////////////////////////////////////////////////////////////////////////////
     // View
     var baseTileLayer:SKNode
     var stackedTileLayer:SKNode
     var heightTileLayer:SKNode
-    var shapeNodeLayer:SKNode
     var changeIndicatorLayer:SKNode
     
     var tileSize:CGSize
@@ -30,7 +29,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
     // Model
     var tileset:Tileset?
     var modelDelegate:DirectModelDelegate?
-    var atlasDelegate:AtlasDelegate?
     var mapBounds:TileRect
     var cameraInWorld:TileCoord
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -41,7 +39,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
     var registeredStackedTiles:[DiscreteTileCoord:TileView]
     var registeredHeightTiles:[DiscreteTileCoord:TileView]
     var registeredChangeIndicators:[DiscreteTileCoord:ChangeIndicator]
-    var registeredShapeNodeViews:[DiscreteTileCoord:SKSpriteNode]
     //////////////////////////////////////////////////////////////////////////////////////////
     
     init(window:CGSize, viewSize:CGSize, tileSize:CGSize)
@@ -61,9 +58,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
         heightTileLayer = SKNode()
         heightTileLayer.position = CGPointZero
         
-        shapeNodeLayer = SKNode()
-        shapeNodeLayer.position = CGPointZero
-        
         changeIndicatorLayer = SKNode()
         changeIndicatorLayer.position = CGPointZero
         
@@ -71,7 +65,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
         registeredStackedTiles = [DiscreteTileCoord:TileView]()
         registeredHeightTiles = [DiscreteTileCoord:TileView]()
         registeredChangeIndicators = [DiscreteTileCoord:ChangeIndicator]()
-        registeredShapeNodeViews = [DiscreteTileCoord:SKSpriteNode]()
         
         mapBounds = TileRect(left:0, right:0, up:0, down:0)
         
@@ -80,7 +73,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
         self.addChild(baseTileLayer)
         self.addChild(stackedTileLayer)
         self.addChild(heightTileLayer)
-        self.addChild(shapeNodeLayer)
         self.addChild(changeIndicatorLayer)
         
         // Equivalent of a 4x view (where a 3x is the maximum zoom)
@@ -372,11 +364,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
         {
             indicatorSprite.position += screenDelta
         }
-        
-        for (_, shapeNodeSprite) in registeredShapeNodeViews
-        {
-            shapeNodeSprite.position += screenDelta
-        }
     }
     
     // Redraws the entire view from scratch
@@ -406,45 +393,37 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
                     if (leftDelta > 0)
                     {
                         removeTilesInRect(oldLeft, right:newLeft-1, down:oldDown, up:oldUp)
-                        removeShapeNodeViewsInRect(oldLeft, right:newLeft-1, down:oldDown, up:oldUp)
                     }
                     else if (leftDelta < 0)
                     {
                         addMissingTilesInRect(newLeft, right:oldLeft-1, down:newDown, up:newUp)
-                        addMissingShapeNodesInRect(newLeft, right:oldLeft-1, down:newDown, up:newUp)
                     }
                     
                     if (rightDelta > 0)
                     {
                         addMissingTilesInRect(oldRight+1, right:newRight, down:newDown, up:newUp)
-                        addMissingShapeNodesInRect(oldRight+1, right:newRight, down:newDown, up:newUp)
                     }
                     else if (rightDelta < 0)
                     {
                         removeTilesInRect(newRight+1, right:oldRight, down:oldDown, up:oldUp)
-                        removeShapeNodeViewsInRect(newRight+1, right:oldRight, down:oldDown, up:oldUp)
                     }
                     
                     if (upDelta > 0)
                     {
                         addMissingTilesInRect(newLeft, right:newRight, down:oldUp+1, up:newUp)
-                        addMissingShapeNodesInRect(newLeft, right:newRight, down:oldUp+1, up:newUp)
                     }
                     else if (upDelta < 0)
                     {
                         removeTilesInRect(oldLeft, right:oldRight, down:newUp+1, up:oldUp)
-                        removeShapeNodeViewsInRect(oldLeft, right:oldRight, down:newUp+1, up:oldUp)
                     }
                     
                     if (downDelta > 0)
                     {
                         removeTilesInRect(oldLeft, right:oldRight, down:oldDown, up:newDown-1)
-                        removeShapeNodeViewsInRect(oldLeft, right:oldRight, down:oldDown, up:newDown-1)
                     }
                     else if (downDelta < 0)
                     {
                         addMissingTilesInRect(newLeft, right:newRight, down:newDown, up:oldDown-1)
-                        addMissingShapeNodesInRect(newLeft, right:newRight, down:newDown, up:oldDown-1)
                     }
                 }
             }
@@ -499,30 +478,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
             for y in down...up
             {
                 redrawTileViewsAt(x, y:y)
-            }
-        }
-    }
-    
-    func addMissingShapeNodesInRect(left:Int, right:Int, down:Int, up:Int)
-    {
-        for x in left...right
-        {
-            for y in down...up
-            {
-                let coord = DiscreteTileCoord(x:x, y:y)
-                redrawShapeNodeAt(coord)
-            }
-        }
-    }
-    
-    func removeShapeNodeViewsInRect(left:Int, right:Int, down:Int, up:Int)
-    {
-        for x in left...right
-        {
-            for y in down...up
-            {
-                let coord = DiscreteTileCoord(x:x, y:y)
-                removeShapeNodeAt(coord)
             }
         }
     }
@@ -658,11 +613,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
                 {
                     redrawTileViewsAt(x, y:y)
                 }
-                
-                if (mapBounds.contains(coord))
-                {
-                    redrawShapeNodeAt(coord)
-                }
             }
         }
     }
@@ -682,59 +632,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
             return nil
         }
     }
-    
-    //////////////////////////////////////////////////////////////////////////////////////////
-    // Shape Map Display
-    //////////////////////////////////////////////////////////////////////////////////////////
-    func redrawShapeNodeAt(coord:DiscreteTileCoord)
-    {
-        if let atlasDelegate = atlasDelegate
-        {
-            if let shapeNode = atlasDelegate.shapeNodeAt(coord)
-            {
-                if let _ = registeredShapeNodeViews[coord]
-                {
-                    // Remove it
-                    removeShapeNodeAt(coord)
-                }
-                
-                addShapeNodeAt(coord, magnitude:shapeNode.strength)
-            }
-        }
-    }
-    
-    func addShapeNodeAt(coord:DiscreteTileCoord, magnitude:Int)
-    {
-        let shapeSprite = SKSpriteNode(imageNamed:"square.png")
-        shapeSprite.position = screenPosForTileViewAtCoord(coord, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
-        
-//        let size = shapeNodeSizeForMagnitude(magnitude)
-//        shapeSprite.resizeNode(size.width, y:size.height)
-        
-        shapeSprite.resizeNode(tileSize.width, y:tileSize.height)
-        shapeSprite.alpha = CGFloat(magnitude) * 0.15
-        shapeSprite.color = UIColor(red:0.0, green:1.0, blue:0.0, alpha:1.0)
-        shapeSprite.colorBlendFactor = 1.0
-        
-        registeredShapeNodeViews[coord] = shapeSprite
-        shapeNodeLayer.addChild(shapeSprite)
-    }
-    
-    func removeShapeNodeAt(coord:DiscreteTileCoord)
-    {
-        if let shapeNodeView = registeredShapeNodeViews[coord]
-        {
-            shapeNodeView.removeFromParent()
-            registeredShapeNodeViews.removeValueForKey(coord)
-        }
-    }
-    
-    func shapeNodeSizeForMagnitude(magnitude:Int) -> CGSize
-    {
-        let diameter = (CGFloat(magnitude)*2.0)
-        return CGSizeMake(diameter, diameter)
-    }
-    
     
     //////////////////////////////////////////////////////////////////////////////////////////
     // Tileset Methods
@@ -1173,49 +1070,6 @@ class TileMapView : SKNode, DirectMapObserver, AtlasObserver
     func registerModelDelegate(delegate:DirectModelDelegate)
     {
         self.modelDelegate = delegate
-    }
-    
-    //////////////////////////////////////////////////////////////////////////////////////////
-    // Atlas Delegate
-    //////////////////////////////////////////////////////////////////////////////////////////
-    
-    func registerAtlasDelegate(delegate:AtlasDelegate)
-    {
-        self.atlasDelegate = delegate
-    }
-    
-    //////////////////////////////////////////////////////////////////////////////////////////
-    // Atlas Observer Methods
-    //////////////////////////////////////////////////////////////////////////////////////////
-    
-    func shapeNodeAddedAt(coord:DiscreteTileCoord, node:Node)
-    {
-        if let _ = registeredShapeNodeViews[coord]
-        {
-            
-        }
-        else
-        {
-            addShapeNodeAt(coord, magnitude:node.strength)
-        }
-    }
-    
-    func shapeNodeRemovedAt(coord:DiscreteTileCoord)
-    {
-        removeShapeNodeAt(coord)
-    }
-    
-    func shapeStrengthChangedAt(coord:DiscreteTileCoord, strength:Int, oldStrength:Int)
-    {
-        if (strength == 0)
-        {
-            removeShapeNodeAt(coord)
-        }
-        else
-        {
-            removeShapeNodeAt(coord)
-            addShapeNodeAt(coord, magnitude:strength)
-        }
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////

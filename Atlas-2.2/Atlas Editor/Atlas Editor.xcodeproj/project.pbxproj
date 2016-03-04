@@ -39,6 +39,9 @@
 		C1436D611C73992F0024B603 /* EditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1436D601C73992F0024B603 /* EditorScene.swift */; };
 		C1436D631C7399900024B603 /* EditorSceneInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1436D621C7399900024B603 /* EditorSceneInteractionController.swift */; };
 		C1436D651C739D230024B603 /* TilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1436D641C739D230024B603 /* TilePageView.swift */; };
+		C143D3CB1C876BF40059B9C5 /* QQTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143D3CA1C876BF40059B9C5 /* QQTask.swift */; };
+		C143D3CD1C8773600059B9C5 /* QQBuildComponentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143D3CC1C8773600059B9C5 /* QQBuildComponentTask.swift */; };
+		C143D3CF1C8774140059B9C5 /* QQRoughOutlineTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C143D3CE1C8774140059B9C5 /* QQRoughOutlineTask.swift */; };
 		C14A32331C77930D000D3331 /* Odin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A32321C77930D000D3331 /* Odin.swift */; };
 		C14A32361C77987B000D3331 /* ACInitializeMapLayerTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A32351C77987B000D3331 /* ACInitializeMapLayerTask.swift */; };
 		C14A323A1C77A7FD000D3331 /* ACTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A32391C77A7FD000D3331 /* ACTask.swift */; };
@@ -51,6 +54,10 @@
 		C152CBFE1C3D7DA400323B85 /* TileMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C152CBFD1C3D7DA400323B85 /* TileMapView.swift */; };
 		C152CC001C3DAEFA00323B85 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C152CBFF1C3DAEFA00323B85 /* TileView.swift */; };
 		C15FF2211C860ABB00CF1D85 /* FRStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15FF2201C860ABB00CF1D85 /* FRStyleGuide.swift */; };
+		C1756F8E1C87BC0800DBB758 /* QQVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1756F8D1C87BC0800DBB758 /* QQVariable.swift */; };
+		C1756F901C87BF6400DBB758 /* QQTaskContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1756F8F1C87BF6400DBB758 /* QQTaskContext.swift */; };
+		C1756F921C88EDB900DBB758 /* QQWorkingMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1756F911C88EDB900DBB758 /* QQWorkingMemory.swift */; };
+		C175BCCE1C894437008DAD5A /* QQFillOutlineTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C175BCCD1C894437008DAD5A /* QQFillOutlineTask.swift */; };
 		C19D42FF1C5AB8760040C11E /* CollaboratorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */; };
 		C19D43011C5ABA3C0040C11E /* CollaboratorStatusPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */; };
 		C19FB0371C3C288000414CFA /* TilesetIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB0351C3C288000414CFA /* TilesetIO.swift */; };
@@ -141,6 +148,9 @@
 		C1436D601C73992F0024B603 /* EditorScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorScene.swift; sourceTree = "<group>"; };
 		C1436D621C7399900024B603 /* EditorSceneInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorSceneInteractionController.swift; sourceTree = "<group>"; };
 		C1436D641C739D230024B603 /* TilePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilePageView.swift; sourceTree = "<group>"; };
+		C143D3CA1C876BF40059B9C5 /* QQTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQTask.swift; sourceTree = "<group>"; };
+		C143D3CC1C8773600059B9C5 /* QQBuildComponentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQBuildComponentTask.swift; sourceTree = "<group>"; };
+		C143D3CE1C8774140059B9C5 /* QQRoughOutlineTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQRoughOutlineTask.swift; sourceTree = "<group>"; };
 		C14A32321C77930D000D3331 /* Odin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Odin.swift; path = "Atlas Editor/Code/Odin/Odin.swift"; sourceTree = "<group>"; };
 		C14A32351C77987B000D3331 /* ACInitializeMapLayerTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACInitializeMapLayerTask.swift; sourceTree = "<group>"; };
 		C14A32391C77A7FD000D3331 /* ACTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTask.swift; sourceTree = "<group>"; };
@@ -153,6 +163,10 @@
 		C152CBFD1C3D7DA400323B85 /* TileMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMapView.swift; sourceTree = "<group>"; };
 		C152CBFF1C3DAEFA00323B85 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		C15FF2201C860ABB00CF1D85 /* FRStyleGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRStyleGuide.swift; sourceTree = "<group>"; };
+		C1756F8D1C87BC0800DBB758 /* QQVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQVariable.swift; sourceTree = "<group>"; };
+		C1756F8F1C87BF6400DBB758 /* QQTaskContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQTaskContext.swift; sourceTree = "<group>"; };
+		C1756F911C88EDB900DBB758 /* QQWorkingMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQWorkingMemory.swift; sourceTree = "<group>"; };
+		C175BCCD1C894437008DAD5A /* QQFillOutlineTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQFillOutlineTask.swift; sourceTree = "<group>"; };
 		C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorStatusView.swift; sourceTree = "<group>"; };
 		C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorStatusPanel.swift; sourceTree = "<group>"; };
 		C19FB0351C3C288000414CFA /* TilesetIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TilesetIO.swift; path = Code/IO/TilesetIO.swift; sourceTree = "<group>"; };
@@ -415,6 +429,20 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		C1756F8C1C87BB3100DBB758 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				C143D3CA1C876BF40059B9C5 /* QQTask.swift */,
+				C1756F8D1C87BC0800DBB758 /* QQVariable.swift */,
+				C1756F8F1C87BF6400DBB758 /* QQTaskContext.swift */,
+				C1756F911C88EDB900DBB758 /* QQWorkingMemory.swift */,
+				C143D3CC1C8773600059B9C5 /* QQBuildComponentTask.swift */,
+				C143D3CE1C8774140059B9C5 /* QQRoughOutlineTask.swift */,
+				C175BCCD1C894437008DAD5A /* QQFillOutlineTask.swift */,
+			);
+			name = Task;
+			sourceTree = "<group>";
+		};
 		C19FB0311C3C273300414CFA /* Boilerplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				C1CAB0EF1C5C0E2A00003FF2 /* Atlas.swift */,
+				C1756F8C1C87BB3100DBB758 /* Task */,
 				C1B2817F1C641C570060CE26 /* MentalModel.swift */,
 			);
 			name = "Atlas (Generation)";
@@ -627,13 +656,17 @@
 				C13116741C3B29480025BFD7 /* AngleUtility.swift in Sources */,
 				C13A505F1C4EBE6300D9DF45 /* PanController.swift in Sources */,
 				C19FB0401C3C2A7000414CFA /* Coordinate.swift in Sources */,
+				C143D3CD1C8773600059B9C5 /* QQBuildComponentTask.swift in Sources */,
 				C14A323A1C77A7FD000D3331 /* ACTask.swift in Sources */,
+				C1756F8E1C87BC0800DBB758 /* QQVariable.swift in Sources */,
 				C12F212F1C80218100B8BA5A /* LKDisplayMapTask.swift in Sources */,
 				C19D43011C5ABA3C0040C11E /* CollaboratorStatusPanel.swift in Sources */,
+				C175BCCE1C894437008DAD5A /* QQFillOutlineTask.swift in Sources */,
 				C152CBFE1C3D7DA400323B85 /* TileMapView.swift in Sources */,
 				C1CAB0E11C5BCD4A00003FF2 /* GenerateScene.swift in Sources */,
 				C13116771C3B29480025BFD7 /* RandomUtility.swift in Sources */,
 				C11229371C74B34600107D5E /* TileMapIO.swift in Sources */,
+				C143D3CF1C8774140059B9C5 /* QQRoughOutlineTask.swift in Sources */,
 				C1CB630F1C7E3ED10059342B /* LKAnalysisView.swift in Sources */,
 				C1B2E8321C44292100F597B1 /* TilesetData.swift in Sources */,
 				C1B281821C641C970060CE26 /* AtomicMap.swift in Sources */,
@@ -647,6 +680,7 @@
 				C13A501B1C4E8F6D00D9DF45 /* NetKit.swift in Sources */,
 				C12F21381C8110CF00B8BA5A /* OneshotAnalysisScene.swift in Sources */,
 				C1CAB0E51C5BFCB700003FF2 /* SimpleButton.swift in Sources */,
+				C1756F921C88EDB900DBB758 /* QQWorkingMemory.swift in Sources */,
 				C1436D611C73992F0024B603 /* EditorScene.swift in Sources */,
 				C13116751C3B29480025BFD7 /* ColorUtility.swift in Sources */,
 				C1CB630D1C7E3EB40059342B /* Loki.swift in Sources */,
@@ -654,6 +688,7 @@
 				C19FB04D1C3C2E5A00414CFA /* FileIO.swift in Sources */,
 				C19D42FF1C5AB8760040C11E /* CollaboratorStatusView.swift in Sources */,
 				C1C9A5D21C84F84E00D7E30D /* FRRectSimilarityModule.swift in Sources */,
+				C1756F901C87BF6400DBB758 /* QQTaskContext.swift in Sources */,
 				C12F212B1C7ECC8100B8BA5A /* LKAnalysisTask.swift in Sources */,
 				C1436D5F1C7399290024B603 /* AnalysisScene.swift in Sources */,
 				C1436D651C739D230024B603 /* TilePageView.swift in Sources */,
@@ -662,6 +697,7 @@
 				C1E711361C597E0D00C90917 /* NetworkDataIO.swift in Sources */,
 				C14A9FCA1C76A8A800AEEE87 /* AnalysisView.swift in Sources */,
 				C19FB0461C3C2A8B00414CFA /* TileMap.swift in Sources */,
+				C143D3CB1C876BF40059B9C5 /* QQTask.swift in Sources */,
 				C19FB03A1C3C28A500414CFA /* AppDelegate.swift in Sources */,
 				C13A50611C4EC63100D9DF45 /* GameSceneInteractionController.swift in Sources */,
 				C131166B1C3B29360025BFD7 /* CollaborateScene.swift in Sources */,

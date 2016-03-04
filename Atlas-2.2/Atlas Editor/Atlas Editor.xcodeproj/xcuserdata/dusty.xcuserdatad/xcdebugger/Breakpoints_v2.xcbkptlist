@@ -6,15 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Atlas Editor/Loki.swift"
-            timestampString = "478159106.927534"
+            filePath = "Atlas Editor/Atlas.swift"
+            timestampString = "478760202.564787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "cognitiveCore(_:)"
             landmarkType = "5">
          </BreakpointContent>

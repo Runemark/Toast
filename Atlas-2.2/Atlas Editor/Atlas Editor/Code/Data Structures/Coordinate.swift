@@ -249,6 +249,13 @@ struct TileRect
         
         return coordinateList
     }
+    
+    func randomCoord() -> DiscreteTileCoord
+    {
+        let random_x = randIntBetween(left, stop:right)
+        let random_y = randIntBetween(down, stop:up)
+        return DiscreteTileCoord(x:random_x, y:random_y)
+    }
 }
 
 

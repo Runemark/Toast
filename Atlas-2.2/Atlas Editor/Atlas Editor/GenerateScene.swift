@@ -35,15 +35,16 @@ class GenerateScene : SKScene,GameSceneInteractionControllerDelegate
         //////////////////////////////////////////////////////////////////////////////////////////
         // Model Declaration
         //////////////////////////////////////////////////////////////////////////////////////////
-        tileset = TilesetIO().importTileset("Crypt")
-        tileset.importAtlas("Crypt")
+        tileset = TilesetIO().importTileset("Rust")
+        tileset.importAtlas("Rust")
         
-        let rustTilesetData = TilesetIO().importTilesetData("Crypt")
+        let rustTilesetData = TilesetIO().importTilesetData("Rust")
         
         map = TileMap(bounds:TileRect(left:0, right:19, up:19, down:0), title:"GenTest")
         map.swapTilesetData(rustTilesetData)
         
-        map.randomizeAllTerrainTiles(Set([0,1,2,3,4]), directly:true)
+//        map.randomizeAllTerrainTiles(Set([0,1,2,3,4]), directly:true)
+        map.setAllTerrainTiles(0, directly:true)
         
         //////////////////////////////////////////////////////////////////////////////////////////
         // View Declaration
@@ -52,10 +53,9 @@ class GenerateScene : SKScene,GameSceneInteractionControllerDelegate
         center = CGPoint(x:window.width/2.0, y:window.height/2.0)
         
         let viewSize = window
-        let tileSize = CGSizeMake(32, 32)
+        let tileSize = CGSizeMake(16, 16)
         mapView = TileMapView(window:window, viewSize:viewSize, tileSize:tileSize)
         mapView.position = center
-        mapView.registerAtlasDelegate(atlas)
         
         mapView.swapTileset(tileset)
         map.registerDirectObserver(mapView)

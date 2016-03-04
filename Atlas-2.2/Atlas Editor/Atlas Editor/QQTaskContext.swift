@@ -1,0 +1,110 @@
+//
+//  QQTaskContext.swift
+//  Atlas Editor
+//
+//  Created by Dusty Artifact on 3/2/16.
+//  Copyright © 2016 Dusty Artifact. All rights reserved.
+//
+
+import Foundation
+
+// The context stores and indexes the actual VALUES of QQVariables.
+// QQVariables only point to the id
+
+class QQTaskContext
+{
+    // name : variable
+    private var variables:[String:QQVariable]
+    private var inputNames:Set<String>
+    private var outputNames:Set<String>
+    
+    init()
+    {
+        self.variables = [String:QQVariable]()
+        self.inputNames = Set<String>()
+        self.outputNames = Set<String>()
+    }
+    
+    func defineInput(name:String, type:QQVariableType, optional:Bool = false)
+    {
+        defineVariable(name, type:type, optional:optional, input:true)
+    }
+    
+    func defineOutput(name:String, type:QQVariableType, optional:Bool = false)
+    {
+        defineVariable(name, type:type, optional:optional, output:true)
+    }
+    
+    func initializeVariable(name:String, id:String)
+    {
+        if let variable = variableNamed(name)
+        {
+            variable.initialize(id)
+        }
+    }
+    
+    func defineVariable(name:String, type:QQVariableType, optional:Bool = false, input:Bool = false, output:Bool = false)
+    {
+        variables[name] = QQVariable(type:type, optional:optional)
+        // The variable is now DEFINED, but UNINITIALIZED (no id associated)
+        
+        if (input)
+        {
+            inputNames.insert(name)
+        }
+        
+        if (output)
+        {
+            outputNames.insert(name)
+        }
+    }
+    
+    func variableNamed(name:String) -> QQVariable?
+    {
+        return variables[name]
+    }
+    
+    func idForVariableNamed(name:String) -> String?
+    {
+        var id:String?
+        
+        if let variable = variableNamed(name)
+        {
+            if (variable.initialized)
+            {
+                id = variable.id!
+            }
+        }
+        
+        return id
+    }
+    
+    func allInputsInitialized() -> Bool
+    {
+        var allInitialized = true
+        
+        for inputName in inputNames
+        {
+            if let input = variableNamed(inputName)
+            {
+                if !input.initialized
+                {
+                    allInitialized = false
+                    break
+                }
+            }
+            else
+            {
+                allInitialized = false
+                break
+            }
+        }
+        
+        return allInitialized
+    }
+    
+    func inputDefined(name:String) -> Bool
+    {
+        return inputNames.contains(name)
+    }
+}

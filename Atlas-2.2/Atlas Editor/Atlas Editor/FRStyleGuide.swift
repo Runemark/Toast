@@ -73,6 +73,42 @@ class FRStyleComponent
             }
         }
     }
+    
+    func maxRect(center:DiscreteTileCoord) -> TileRect
+    {
+        var left = center.x
+        var right = center.x
+        var up = center.y
+        var down = center.y
+        
+        if (width.max.odd())
+        {
+            let w_rad = (width.max - 1)/2
+            left = center.x - w_rad
+            right = center.x + w_rad
+        }
+        else
+        {
+            let w_rad = (width.max - 1)/2
+            left = center.x - w_rad + 1
+            right = center.x + w_rad
+        }
+        
+        if (height.max.odd())
+        {
+            let h_rad = (height.max - 1)/2
+            down = center.y - h_rad
+            up = center.y + h_rad
+        }
+        else
+        {
+            let h_rad = (height.max - 1)/2
+            down = center.y - h_rad + 1
+            up = center.y + h_rad
+        }
+        
+        return TileRect(left:left, right:right, up:up, down:down)
+    }
 }
 
 class FRStyleGuide

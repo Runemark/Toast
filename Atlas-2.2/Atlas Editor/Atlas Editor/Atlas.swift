@@ -20,11 +20,22 @@ protocol IntelligentAgentDelegate
     func halt()
 }
 
-class Atlas
+protocol QQCanvasDelegate
+{
+    // Inquisitive
+    func canvasBounds() -> TileRect
+    func atomicValueAt(coord:DiscreteTileCoord) -> Int
+    
+    // Declarative
+    func setTerrainTileAt(coord:DiscreteTileCoord, value:Int)
+}
+
+class Atlas : QQCanvasDelegate
 {
     var model:TileMap
     var bounds:TileRect
     var guide:FRStyleGuide
+    var task:QQTask
     
     var operatingState:OperatingState = OperatingState.HALTED
     
@@ -32,8 +43,6 @@ class Atlas
     var actionRegulator:NSTimer = NSTimer()
     
     var actions:Queue<Change>
-    
-    var oneTimeFlag = false
     
     init(model:TileMap, bounds:TileRect, guide:FRStyleGuide)
     {
@@ -46,13 +55,23 @@ class Atlas
         self.cognitionRegulator = NSTimer()
         self.actionRegulator = NSTimer()
         
+        self.task = QQBuildComponentTask()
+        task.registerCanvas(self)
+        
+        if (guide.components.count > 0)
+        {
+            let component = guide.components.first!
+            let id = QQWorkingMemory.sharedInstance.registerComponent(component)
+            task.initializeInput("component", id:id)
+        }
+        
         self.initializeRegulators()
     }
     
     func initializeRegulators()
     {
         let cognitiveSpeed = 1.0/Double(10)
-        let actionSpeed = 1.0/Double(30)
+        let actionSpeed = 1.0/Double(60)
         
         cognitionRegulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:"cognitiveCore:", userInfo:nil, repeats:true)
         actionRegulator = NSTimer.scheduledTimerWithTimeInterval(actionSpeed, target:self, selector:"actionCore:", userInfo:nil, repeats:true)
@@ -85,7 +104,15 @@ class Atlas
     {
         if (operatingState != .HALTED)
         {
+//            let randomCoord = bounds.randomCoord()
+//            let randomUID = randIntBetween(0, stop:2)
+//            let change = Change(coord:randomCoord, layer:TileLayer.TERRAIN, value:randomUID, collaboratorUUID:"Internal")
+//            actions.enqueue(change)
             
+            if let nextTask = task.nextSubtask()
+            {
+                nextTask.apply()
+            }
         }
     }
     
@@ -117,5 +144,25 @@ class Atlas
                 operatingState = .HALTED
             }
         }
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // CANVAS METHODS
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func canvasBounds() -> TileRect
+    {
+        return bounds
+    }
+    
+    func atomicValueAt(coord:DiscreteTileCoord) -> Int
+    {
+        return model.terrainTileUIDAt(coord)
+    }
+    
+    func setTerrainTileAt(coord:DiscreteTileCoord, value:Int)
+    {
+        let change = Change(coord:coord, layer:TileLayer.TERRAIN, value:value, collaboratorUUID:"Internal")
+        actions.enqueue(change)
     }
 }
