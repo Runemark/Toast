@@ -48,7 +48,6 @@ class ZZContentDistanceMap : QQTask
     // Task
     override func apply()
     {
-        // Cannot proceed unless all inputs are initialized
         if (context.allInputsInitialized())
         {
             if (!initialized)
@@ -58,20 +57,6 @@ class ZZContentDistanceMap : QQTask
             else
             {
                 expansionStage()
-                
-                
-//                if (uncheckedCoordinates.count == 0)
-//                {
-//                    print("~~ Density: [Complete]")
-//                    // ~Register~ the density
-//                    
-//                    let densityId = QQWorkingMemory.sharedInstance.registerDensityMap(density)
-//                    context.initializeVariable("density", id:densityId)
-//                    
-//                    success = true
-//                    
-//                    complete()
-//                }
             }
         }
     }

@@ -112,6 +112,11 @@ class QQTask : QQTaskDelegate
         // Each subclass of Task will have customized methods of dealing with completed children,
         // And will end with a call to this superclass implementation.
         removeSubtask(subtask)
+        
+        if (subtasks.count == 0)
+        {
+            complete()
+        }
     }
     
     func nextSubtask() -> QQTask?

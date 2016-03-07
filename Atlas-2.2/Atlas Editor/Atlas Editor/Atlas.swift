@@ -31,6 +31,7 @@ protocol QQCanvasDelegate
     // Declarative
     func setTerrainTileAt(coord:DiscreteTileCoord, value:Int)
     func updateDensityNodeAt(coord:DiscreteTileCoord, density:Int)
+    func clearDensity()
     
     func registerComponentRect(rect:TileRect)
 }
@@ -86,7 +87,7 @@ class Atlas : QQCanvasDelegate
     
     func initializeRegulators()
     {
-        let cognitiveSpeed = 1.0/Double(15)
+        let cognitiveSpeed = 1.0/Double(2)
         let actionSpeed = 1.0/Double(60)
         
         cognitionRegulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:"cognitiveCore:", userInfo:nil, repeats:true)
@@ -187,6 +188,14 @@ class Atlas : QQCanvasDelegate
         if let mapView = mapView
         {
             mapView.updateDensityNodeAt(coord, density:density)
+        }
+    }
+    
+    func clearDensity()
+    {
+        if let mapView = mapView
+        {
+            mapView.clearDensity()
         }
     }
     

@@ -44,9 +44,15 @@ class ZZVisualizeDensity : QQTask
                         canvas.updateDensityNodeAt(coord, density:value)
                     }
                 }
+                
+                let _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target:self, selector:"visualUpdateComplete", userInfo:nil, repeats:false)
             }
         }
-        
+    }
+    
+    @objc func visualUpdateComplete()
+    {
+        success = true
         complete()
     }
 }

@@ -46,14 +46,16 @@ class ZZDensityMap : QQTask
         {
             if (!initialized)
             {
+                print("~~~~ Density: Started")
                 initializeStage()
+                
+                let clearTask = ZZClearDensity()
+                insertSubaskLast(clearTask)
             }
             else
             {
                 for _ in 1...10
                 {
-                    print("~~ Density: Recalculating")
-                    
                     if let nextCoord = uncheckedCoordinates.dequeue()
                     {
                         recalculateDensityAt(nextCoord)
@@ -62,7 +64,7 @@ class ZZDensityMap : QQTask
                 
                 if (uncheckedCoordinates.count == 0)
                 {
-                    print("~~ Density: [Complete]")
+                    print("~~~~ Density: <Complete>")
                     // ~Register~ the density
                     
                     let densityId = QQWorkingMemory.sharedInstance.registerDensityMap(density)

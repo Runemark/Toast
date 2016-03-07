@@ -66,6 +66,8 @@
 		C178E52F1C8E01D400AD753C /* ZZContentDistanceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C178E52E1C8E01D400AD753C /* ZZContentDistanceMap.swift */; };
 		C178E5311C8E144400AD753C /* ZZVisualizeDensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C178E5301C8E144400AD753C /* ZZVisualizeDensity.swift */; };
 		C178E5331C8E347400AD753C /* ZZOutlineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C178E5321C8E347400AD753C /* ZZOutlineComponent.swift */; };
+		C178E5351C8E3B8800AD753C /* ZZPlaceOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C178E5341C8E3B8800AD753C /* ZZPlaceOutline.swift */; };
+		C178E5371C8E4A9200AD753C /* ZZClearDensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C178E5361C8E4A9200AD753C /* ZZClearDensity.swift */; };
 		C19D42FF1C5AB8760040C11E /* CollaboratorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */; };
 		C19D43011C5ABA3C0040C11E /* CollaboratorStatusPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */; };
 		C19FB0371C3C288000414CFA /* TilesetIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB0351C3C288000414CFA /* TilesetIO.swift */; };
@@ -183,6 +185,8 @@
 		C178E52E1C8E01D400AD753C /* ZZContentDistanceMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZContentDistanceMap.swift; sourceTree = "<group>"; };
 		C178E5301C8E144400AD753C /* ZZVisualizeDensity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZVisualizeDensity.swift; sourceTree = "<group>"; };
 		C178E5321C8E347400AD753C /* ZZOutlineComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZOutlineComponent.swift; sourceTree = "<group>"; };
+		C178E5341C8E3B8800AD753C /* ZZPlaceOutline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZPlaceOutline.swift; sourceTree = "<group>"; };
+		C178E5361C8E4A9200AD753C /* ZZClearDensity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZClearDensity.swift; sourceTree = "<group>"; };
 		C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorStatusView.swift; sourceTree = "<group>"; };
 		C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorStatusPanel.swift; sourceTree = "<group>"; };
 		C19FB0351C3C288000414CFA /* TilesetIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TilesetIO.swift; path = Code/IO/TilesetIO.swift; sourceTree = "<group>"; };
@@ -454,11 +458,13 @@
 				C1756F911C88EDB900DBB758 /* QQWorkingMemory.swift */,
 				C15E6E0F1C8B3FAA002B23F2 /* ZZBuildLevel.swift */,
 				C10D9EBD1C8B6CE80050828E /* ZZAddComponent.swift */,
+				C178E5341C8E3B8800AD753C /* ZZPlaceOutline.swift */,
 				C178E5321C8E347400AD753C /* ZZOutlineComponent.swift */,
 				C10D9EBF1C8B72290050828E /* ZZFillRect.swift */,
 				C10D9EC11C8BA6000050828E /* ZZDensityMap.swift */,
 				C178E52E1C8E01D400AD753C /* ZZContentDistanceMap.swift */,
 				C178E5301C8E144400AD753C /* ZZVisualizeDensity.swift */,
+				C178E5361C8E4A9200AD753C /* ZZClearDensity.swift */,
 				C15E6E0D1C8A70A2002B23F2 /* QQBuildFromGuideTask.swift */,
 				C143D3CC1C8773600059B9C5 /* QQBuildComponentTask.swift */,
 				C143D3CE1C8774140059B9C5 /* QQRoughOutlineTask.swift */,
@@ -691,6 +697,7 @@
 				C175BCCE1C894437008DAD5A /* QQFillOutlineTask.swift in Sources */,
 				C152CBFE1C3D7DA400323B85 /* TileMapView.swift in Sources */,
 				C1CAB0E11C5BCD4A00003FF2 /* GenerateScene.swift in Sources */,
+				C178E5371C8E4A9200AD753C /* ZZClearDensity.swift in Sources */,
 				C13116771C3B29480025BFD7 /* RandomUtility.swift in Sources */,
 				C11229371C74B34600107D5E /* TileMapIO.swift in Sources */,
 				C143D3CF1C8774140059B9C5 /* QQRoughOutlineTask.swift in Sources */,
@@ -724,6 +731,7 @@
 				C1436D651C739D230024B603 /* TilePageView.swift in Sources */,
 				C1CE0F321C7CAD3E0012B972 /* DensityMap.swift in Sources */,
 				C19FB0371C3C288000414CFA /* TilesetIO.swift in Sources */,
+				C178E5351C8E3B8800AD753C /* ZZPlaceOutline.swift in Sources */,
 				C1E711361C597E0D00C90917 /* NetworkDataIO.swift in Sources */,
 				C14A9FCA1C76A8A800AEEE87 /* AnalysisView.swift in Sources */,
 				C19FB0461C3C2A8B00414CFA /* TileMap.swift in Sources */,

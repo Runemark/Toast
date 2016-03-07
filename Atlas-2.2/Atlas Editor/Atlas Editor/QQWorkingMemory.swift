@@ -20,6 +20,7 @@ class QQWorkingMemory
     var atomicMaps:[String:AtomicMap<Int>]
     var densityMaps:[String:DensityMap]
     var coordSets:[String:Set<DiscreteTileCoord>]
+    var discreteCoords:[String:DiscreteTileCoord]
     
     private init()
     {
@@ -30,6 +31,7 @@ class QQWorkingMemory
         self.atomicMaps = [String:AtomicMap<Int>]()
         self.densityMaps = [String:DensityMap]()
         self.coordSets = [String:Set<DiscreteTileCoord>]()
+        self.discreteCoords = [String:DiscreteTileCoord]()
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -76,6 +78,14 @@ class QQWorkingMemory
         return id
     }
     
+    func registerDiscreteCoord(value:DiscreteTileCoord) -> String
+    {
+        let id = NSUUID().UUIDString
+        registerDiscreteCoord(id, value:value)
+        
+        return id
+    }
+    
     func registerComponent(id:String, value:FRStyleComponent)
     {
         variables[id] = QQVariableType.COMPONENT
@@ -104,6 +114,12 @@ class QQWorkingMemory
     {
         variables[id] = QQVariableType.COORDSET
         coordSets[id] = value
+    }
+    
+    func registerDiscreteCoord(id:String, value:DiscreteTileCoord)
+    {
+        variables[id] = QQVariableType.DISCRETECOORD
+        discreteCoords[id] = value
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -153,6 +169,18 @@ class QQWorkingMemory
         if idMatchesType(id, type:QQVariableType.DENSITYMAP)
         {
             value = densityMaps[id]
+        }
+        
+        return value
+    }
+    
+    func discreteCoordValue(id:String) -> DiscreteTileCoord?
+    {
+        var value:DiscreteTileCoord?
+        
+        if idMatchesType(id, type:QQVariableType.DISCRETECOORD)
+        {
+            value = discreteCoords[id]
         }
         
         return value

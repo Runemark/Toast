@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ZZPlaceComponent : QQTask
+class ZZPlaceOutline : QQTask
 {
     override init()
     {
@@ -22,10 +22,12 @@ class ZZPlaceComponent : QQTask
         ////////////////////////////////////////////////////////////
         // Output ()
         ////////////////////////////////////////////////////////////
+        context.defineOutput("offset", type:QQVariableType.DISCRETECOORD)
     }
     
     ////////////////////////////////////////////////////////////
-    // Task
+    // Task: Decide where to place the outline on the map
+    // Returns an offset from the outline's
     override func apply()
     {
         if (context.allInputsInitialized())
@@ -40,17 +42,24 @@ class ZZPlaceComponent : QQTask
                 if (canvas.componentRectCount() == 0)
                 {
                     // Place at CENTER
-                    let center = canvas.canvasBounds().center()
+                    let mapCenter = canvas.canvasBounds().center()
+                    let outlineCenter = outline.center()
+                    
+                    let offset = mapCenter - outlineCenter
+                    let offsetId = context.setGlobalDiscreteCoord(offset)
+                    context.initializeVariable("offset", id:offsetId)
                     
                     
+                    // Register the component rect with HQ
+                    canvas.registerComponentRect(<#T##rect: TileRect##TileRect#>)
                 }
                 else
                 {
-                    let densityTask = ZZDensityMap()
-                    let distanceTask = ZZContentDistanceMap()
-                    
-                    insertSubaskLast(densityTask)
-                    insertSubaskLast(distanceTask)
+//                    let densityTask = ZZDensityMap()
+//                    let distanceTask = ZZContentDistanceMap()
+//                    
+//                    insertSubaskLast(densityTask)
+//                    insertSubaskLast(distanceTask)
                 }
             }
         }

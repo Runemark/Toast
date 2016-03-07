@@ -30,6 +30,8 @@ class ZZOutlineComponent : QQTask
     {
         if (context.allInputsInitialized())
         {
+            print("~~ Outline: Apply")
+            
             let outline = TileRect(left:0, right:0, up:3, down:3)
             let outlineId = context.setGlobalRect(outline)
             context.initializeVariable("outline", id:outlineId)
@@ -37,7 +39,7 @@ class ZZOutlineComponent : QQTask
             success = true
             complete()
             
-            print("~~~ Outline: <Complete>")
+            print("~~ Outline: <Complete>")
         }
     }
 }

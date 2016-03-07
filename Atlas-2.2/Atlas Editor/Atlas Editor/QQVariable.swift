@@ -10,7 +10,7 @@ import Foundation
 
 enum QQVariableType
 {
-    case COMPONENT, RECT, ATOMICMAP, DENSITYMAP, COORDSET
+    case COMPONENT, RECT, ATOMICMAP, DENSITYMAP, COORDSET, DISCRETECOORD
 }
 
 class QQVariable

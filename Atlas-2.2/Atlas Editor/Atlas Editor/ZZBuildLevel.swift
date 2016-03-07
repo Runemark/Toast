@@ -37,7 +37,6 @@ class ZZBuildLevel : QQTask
     {
         if let _ = canvas
         {
-            // Cannot proceed unless all inputs are initialized
             if (context.allInputsInitialized())
             {
                 if (stage == .BUILD || stage == .EVALUATE)
@@ -59,7 +58,7 @@ class ZZBuildLevel : QQTask
     
     func buildStage()
     {
-        print("BuildLevel: BUILD stage")
+        print("BuildLevel: Build Stage")
         
         let addComponentTask = ZZAddComponent()
         insertSubaskLast(addComponentTask)
@@ -67,7 +66,7 @@ class ZZBuildLevel : QQTask
     
     func evaluateStage()
     {
-        print("BuildLevel: EVALUATE stage")
+        print("BuildLevel: Evaluate stage")
         
         if (componentCount == 3)
         {

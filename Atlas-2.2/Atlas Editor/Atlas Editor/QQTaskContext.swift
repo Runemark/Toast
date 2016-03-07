@@ -126,4 +126,9 @@ class QQTaskContext
     {
         return QQWorkingMemory.sharedInstance.registerDensityMap(value)
     }
+    
+    func setGlobalDiscreteCoord(value:DiscreteTileCoord) -> String
+    {
+        return QQWorkingMemory.sharedInstance.registerDiscreteCoord(value)
+    }
 }
