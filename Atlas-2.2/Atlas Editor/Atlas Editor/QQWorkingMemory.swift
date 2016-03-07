@@ -17,6 +17,9 @@ class QQWorkingMemory
     
     var components:[String:FRStyleComponent]
     var rects:[String:TileRect]
+    var atomicMaps:[String:AtomicMap<Int>]
+    var densityMaps:[String:DensityMap]
+    var coordSets:[String:Set<DiscreteTileCoord>]
     
     private init()
     {
@@ -24,6 +27,9 @@ class QQWorkingMemory
         
         self.components = [String:FRStyleComponent]()
         self.rects = [String:TileRect]()
+        self.atomicMaps = [String:AtomicMap<Int>]()
+        self.densityMaps = [String:DensityMap]()
+        self.coordSets = [String:Set<DiscreteTileCoord>]()
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +52,30 @@ class QQWorkingMemory
         return id
     }
     
+    func registerAtomicMap(value:AtomicMap<Int>) -> String
+    {
+        let id = NSUUID().UUIDString
+        registerAtomicMap(id, value:value)
+        
+        return id
+    }
+    
+    func registerDensityMap(value:DensityMap) -> String
+    {
+        let id = NSUUID().UUIDString
+        registerDensityMap(id, value:value)
+        
+        return id
+    }
+    
+    func registerCoordSet(value:Set<DiscreteTileCoord>) -> String
+    {
+        let id = NSUUID().UUIDString
+        registerCoordSet(id, value:value)
+        
+        return id
+    }
+    
     func registerComponent(id:String, value:FRStyleComponent)
     {
         variables[id] = QQVariableType.COMPONENT
@@ -56,6 +86,24 @@ class QQWorkingMemory
     {
         variables[id] = QQVariableType.RECT
         rects[id] = value
+    }
+    
+    func registerAtomicMap(id:String, value:AtomicMap<Int>)
+    {
+        variables[id] = QQVariableType.ATOMICMAP
+        atomicMaps[id] = value
+    }
+    
+    func registerDensityMap(id:String, value:DensityMap)
+    {
+        variables[id] = QQVariableType.DENSITYMAP
+        densityMaps[id] = value
+    }
+    
+    func registerCoordSet(id:String, value:Set<DiscreteTileCoord>)
+    {
+        variables[id] = QQVariableType.COORDSET
+        coordSets[id] = value
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -81,6 +129,30 @@ class QQWorkingMemory
         if idMatchesType(id, type:QQVariableType.RECT)
         {
             value = rects[id]
+        }
+        
+        return value
+    }
+    
+    func atomicMapValue(id:String) -> AtomicMap<Int>?
+    {
+        var value:AtomicMap<Int>?
+        
+        if idMatchesType(id, type:QQVariableType.ATOMICMAP)
+        {
+            value = atomicMaps[id]
+        }
+        
+        return value
+    }
+    
+    func densityMapValue(id:String) -> DensityMap?
+    {
+        var value:DensityMap?
+        
+        if idMatchesType(id, type:QQVariableType.DENSITYMAP)
+        {
+            value = densityMaps[id]
         }
         
         return value

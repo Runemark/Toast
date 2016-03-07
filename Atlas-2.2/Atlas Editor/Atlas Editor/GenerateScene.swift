@@ -40,7 +40,7 @@ class GenerateScene : SKScene,GameSceneInteractionControllerDelegate
         
         let rustTilesetData = TilesetIO().importTilesetData("Rust")
         
-        map = TileMap(bounds:TileRect(left:0, right:19, up:19, down:0), title:"GenTest")
+        map = TileMap(bounds:TileRect(left:0, right:9, up:9, down:0), title:"GenTest")
         map.swapTilesetData(rustTilesetData)
         
 //        map.randomizeAllTerrainTiles(Set([0,1,2,3,4]), directly:true)
@@ -72,6 +72,7 @@ class GenerateScene : SKScene,GameSceneInteractionControllerDelegate
         if let guide = StyleGuideIO().importGuide("Scrap001")
         {
             atlas = Atlas(model:map, bounds:map.mapBounds(), guide:guide)
+            atlas!.registerMapView(mapView)
         }
         
         self.backgroundColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1.0)

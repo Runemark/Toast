@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum QQBuildComponentPhase
+enum QQBuildFromGuidePhase
 {
-    case INITIALIZATION, OUTLINE
+    case INITIALIZATION, WAIT
 }
 
-class QQBuildComponentTask : QQTask
+class QQBuildFromGuideTask : QQTask
 {
-    var phase:QQBuildComponentPhase = QQBuildComponentPhase.INITIALIZATION
+    var phase:QQBuildFromGuidePhase = QQBuildFromGuidePhase.INITIALIZATION
     
     override init()
     {
@@ -40,22 +40,22 @@ class QQBuildComponentTask : QQTask
         {
             if (phase == .INITIALIZATION)
             {
-                let outlineTask = QQRoughOutlineTask()
-                if let componentId = context.idForVariableNamed("component")
-                {
-                    outlineTask.initializeInput("component", id:componentId)
-                }
+//                let buildComponentTask = QQBuildComponentTask()
+//                if let componentId = context.idForVariableNamed("component")
+//                {
+//                    buildComponentTask.initializeInput("component", id:componentId)
+//                }
+//                
+//                insertSubaskLast(outlineTask)
+//                
+//                let fillTask = QQFillOutlineTask()
+//                outlineTask.entangle("outline", task:fillTask, inputName:"outline")
+//                
+//                insertSubaskLast(fillTask)
                 
-                insertSubaskLast(outlineTask)
-                
-                let fillTask = QQFillOutlineTask()
-                outlineTask.prepareToSend("outline", receivingTask:fillTask, receivingVariable:"outline")
-                
-                insertSubaskLast(fillTask)
-                
-                phase = .OUTLINE
+                phase = .WAIT
             }
-            else if (phase == .OUTLINE)
+            else if (phase == .WAIT)
             {
                 print("COMPLETE BUILD TASK")
                 complete()

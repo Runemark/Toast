@@ -26,13 +26,19 @@ protocol QQCanvasDelegate
     func canvasBounds() -> TileRect
     func atomicValueAt(coord:DiscreteTileCoord) -> Int
     
+    func componentRectCount() -> Int
+    
     // Declarative
     func setTerrainTileAt(coord:DiscreteTileCoord, value:Int)
+    func updateDensityNodeAt(coord:DiscreteTileCoord, density:Int)
+    
+    func registerComponentRect(rect:TileRect)
 }
 
 class Atlas : QQCanvasDelegate
 {
     var model:TileMap
+    var mapView:TileMapView?
     var bounds:TileRect
     var guide:FRStyleGuide
     var task:QQTask
@@ -43,6 +49,8 @@ class Atlas : QQCanvasDelegate
     var actionRegulator:NSTimer = NSTimer()
     
     var actions:Queue<Change>
+    
+    var components:[TileRect]
     
     init(model:TileMap, bounds:TileRect, guide:FRStyleGuide)
     {
@@ -55,22 +63,30 @@ class Atlas : QQCanvasDelegate
         self.cognitionRegulator = NSTimer()
         self.actionRegulator = NSTimer()
         
-        self.task = QQBuildComponentTask()
+        self.task = ZZBuildLevel()
+        
+        self.components = [TileRect]()
+        
         task.registerCanvas(self)
         
-        if (guide.components.count > 0)
-        {
-            let component = guide.components.first!
-            let id = QQWorkingMemory.sharedInstance.registerComponent(component)
-            task.initializeInput("component", id:id)
-        }
+//        if (guide.components.count > 0)
+//        {
+////            let component = guide.components.first!
+////            let id = QQWorkingMemory.sharedInstance.registerComponent(component)
+////            task.initializeInput("component", id:id)
+//        }
         
         self.initializeRegulators()
     }
     
+    func registerMapView(mapView:TileMapView)
+    {
+        self.mapView = mapView
+    }
+    
     func initializeRegulators()
     {
-        let cognitiveSpeed = 1.0/Double(10)
+        let cognitiveSpeed = 1.0/Double(15)
         let actionSpeed = 1.0/Double(60)
         
         cognitionRegulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:"cognitiveCore:", userInfo:nil, repeats:true)
@@ -164,5 +180,23 @@ class Atlas : QQCanvasDelegate
     {
         let change = Change(coord:coord, layer:TileLayer.TERRAIN, value:value, collaboratorUUID:"Internal")
         actions.enqueue(change)
+    }
+    
+    func updateDensityNodeAt(coord:DiscreteTileCoord, density:Int)
+    {
+        if let mapView = mapView
+        {
+            mapView.updateDensityNodeAt(coord, density:density)
+        }
+    }
+    
+    func registerComponentRect(rect:TileRect)
+    {
+        components.append(rect)
+    }
+    
+    func componentRectCount() -> Int
+    {
+        return components.count
     }
 }

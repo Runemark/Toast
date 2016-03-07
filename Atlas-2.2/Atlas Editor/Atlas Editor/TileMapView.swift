@@ -25,6 +25,11 @@ class TileMapView : SKNode, DirectMapObserver
     var tileViewRect:TileRect?
     //////////////////////////////////////////////////////////////////////////////////////////
     
+    ////////////////////////////////////////////////////////////
+    // SHAPE DENSITY LAYER
+    var shapeDensityLayer:SKNode
+    ////////////////////////////////////////////////////////////
+    
     //////////////////////////////////////////////////////////////////////////////////////////
     // Model
     var tileset:Tileset?
@@ -39,6 +44,8 @@ class TileMapView : SKNode, DirectMapObserver
     var registeredStackedTiles:[DiscreteTileCoord:TileView]
     var registeredHeightTiles:[DiscreteTileCoord:TileView]
     var registeredChangeIndicators:[DiscreteTileCoord:ChangeIndicator]
+    
+    var registeredDensityNodes:[DiscreteTileCoord:SKSpriteNode]
     //////////////////////////////////////////////////////////////////////////////////////////
     
     init(window:CGSize, viewSize:CGSize, tileSize:CGSize)
@@ -61,10 +68,14 @@ class TileMapView : SKNode, DirectMapObserver
         changeIndicatorLayer = SKNode()
         changeIndicatorLayer.position = CGPointZero
         
+        shapeDensityLayer = SKNode()
+        shapeDensityLayer.position = CGPointZero
+        
         registeredBaseTiles = [DiscreteTileCoord:TileView]()
         registeredStackedTiles = [DiscreteTileCoord:TileView]()
         registeredHeightTiles = [DiscreteTileCoord:TileView]()
         registeredChangeIndicators = [DiscreteTileCoord:ChangeIndicator]()
+        registeredDensityNodes = [DiscreteTileCoord:SKSpriteNode]()
         
         mapBounds = TileRect(left:0, right:0, up:0, down:0)
         
@@ -74,6 +85,7 @@ class TileMapView : SKNode, DirectMapObserver
         self.addChild(stackedTileLayer)
         self.addChild(heightTileLayer)
         self.addChild(changeIndicatorLayer)
+        self.addChild(shapeDensityLayer)
         
         // Equivalent of a 4x view (where a 3x is the maximum zoom)
         let boundWidth = (window.width - viewBoundSize.width)/2.0
@@ -272,6 +284,81 @@ class TileMapView : SKNode, DirectMapObserver
         {
             tileView.removeFromParent()
             registeredHeightTiles.removeValueForKey(coord)
+        }
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Density Methods
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func addDensityNodeAt(coord:DiscreteTileCoord, density:Int)
+    {
+        if (density > 0)
+        {
+            let node = SKSpriteNode(imageNamed:"square.png")
+            node.resizeNode(tileSize.width/CGFloat(5), y:tileSize.height/CGFloat(5))
+            let alpha = CGFloat(Double(density) * 0.1)
+            
+            node.position = screenPosForTileViewAtCoord(coord, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
+            
+            let fadeAction = fadeTo(0.0, finish:alpha, duration:0.4, type:CurveType.QUADRATIC_OUT)
+            node.runAction(fadeAction)
+            
+            let growAction = scaleToSize(node, size:tileSize, duration:0.4, type:CurveType.QUADRATIC_INOUT)
+            node.runAction(growAction)
+            
+            shapeDensityLayer.addChild(node)
+            registeredDensityNodes[coord] = node
+        }
+    }
+    
+    func updateDensityNodeAt(coord:DiscreteTileCoord, density:Int)
+    {
+        if (density > 0)
+        {
+            if let existingNode = registeredDensityNodes[coord]
+            {
+                existingNode.removeAllActions()
+                
+                let growAction = scaleToSize(existingNode, size:tileSize*Double(density), duration:0.4, type:CurveType.QUADRATIC_INOUT)
+                existingNode.runAction(growAction)
+                
+                let fadeAction = fadeTo(existingNode, alpha:CGFloat(density)*CGFloat(0.1), duration:0.4, type:CurveType.QUADRATIC_INOUT)
+                existingNode.runAction(fadeAction)
+            }
+            else
+            {
+                addDensityNodeAt(coord, density:density)
+            }
+        }
+        else
+        {
+            removeDensityNodeAt(coord)
+        }
+    }
+    
+    func removeDensityNodeAt(coord:DiscreteTileCoord)
+    {
+        if let shapeNode = registeredDensityNodes[coord]
+        {
+            shapeNode.removeAllActions()
+            
+            let fadeAction = fadeTo(shapeNode, alpha:0.0, duration:0.4, type:CurveType.QUADRATIC_OUT)
+            shapeNode.runAction(fadeAction)
+            
+            let growAction = scaleToSize(shapeNode, size:CGSizeMake(1, 1), duration:0.4, type:CurveType.QUADRATIC_INOUT)
+            shapeNode.runAction(growAction, completion: { () -> Void in
+                shapeNode.removeFromParent()
+                self.registeredDensityNodes.removeValueForKey(coord)
+            })
+        }
+    }
+    
+    func clearDensity()
+    {
+        for (coord, _) in registeredDensityNodes
+        {
+            removeDensityNodeAt(coord)
         }
     }
     

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C10D9EBE1C8B6CE80050828E /* ZZAddComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D9EBD1C8B6CE80050828E /* ZZAddComponent.swift */; };
+		C10D9EC01C8B72290050828E /* ZZFillRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D9EBF1C8B72290050828E /* ZZFillRect.swift */; };
+		C10D9EC21C8BA6000050828E /* ZZDensityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D9EC11C8BA6000050828E /* ZZDensityMap.swift */; };
 		C10E3ACD1C862C38009C77DE /* StyleGuideIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3ACC1C862C38009C77DE /* StyleGuideIO.swift */; };
 		C11229371C74B34600107D5E /* TileMapIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11229361C74B34600107D5E /* TileMapIO.swift */; };
 		C12BED591C3B270E007F83F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12BED571C3B270E007F83F4 /* Main.storyboard */; };
@@ -53,11 +56,16 @@
 		C14C5F341C825481004C264E /* FRContentTraversalModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14C5F331C825481004C264E /* FRContentTraversalModule.swift */; };
 		C152CBFE1C3D7DA400323B85 /* TileMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C152CBFD1C3D7DA400323B85 /* TileMapView.swift */; };
 		C152CC001C3DAEFA00323B85 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C152CBFF1C3DAEFA00323B85 /* TileView.swift */; };
+		C15E6E0E1C8A70A2002B23F2 /* QQBuildFromGuideTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15E6E0D1C8A70A2002B23F2 /* QQBuildFromGuideTask.swift */; };
+		C15E6E101C8B3FAA002B23F2 /* ZZBuildLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15E6E0F1C8B3FAA002B23F2 /* ZZBuildLevel.swift */; };
 		C15FF2211C860ABB00CF1D85 /* FRStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15FF2201C860ABB00CF1D85 /* FRStyleGuide.swift */; };
 		C1756F8E1C87BC0800DBB758 /* QQVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1756F8D1C87BC0800DBB758 /* QQVariable.swift */; };
 		C1756F901C87BF6400DBB758 /* QQTaskContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1756F8F1C87BF6400DBB758 /* QQTaskContext.swift */; };
 		C1756F921C88EDB900DBB758 /* QQWorkingMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1756F911C88EDB900DBB758 /* QQWorkingMemory.swift */; };
 		C175BCCE1C894437008DAD5A /* QQFillOutlineTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C175BCCD1C894437008DAD5A /* QQFillOutlineTask.swift */; };
+		C178E52F1C8E01D400AD753C /* ZZContentDistanceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C178E52E1C8E01D400AD753C /* ZZContentDistanceMap.swift */; };
+		C178E5311C8E144400AD753C /* ZZVisualizeDensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C178E5301C8E144400AD753C /* ZZVisualizeDensity.swift */; };
+		C178E5331C8E347400AD753C /* ZZOutlineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C178E5321C8E347400AD753C /* ZZOutlineComponent.swift */; };
 		C19D42FF1C5AB8760040C11E /* CollaboratorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */; };
 		C19D43011C5ABA3C0040C11E /* CollaboratorStatusPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */; };
 		C19FB0371C3C288000414CFA /* TilesetIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FB0351C3C288000414CFA /* TilesetIO.swift */; };
@@ -112,6 +120,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C10D9EBD1C8B6CE80050828E /* ZZAddComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZAddComponent.swift; sourceTree = "<group>"; };
+		C10D9EBF1C8B72290050828E /* ZZFillRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZFillRect.swift; sourceTree = "<group>"; };
+		C10D9EC11C8BA6000050828E /* ZZDensityMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZDensityMap.swift; sourceTree = "<group>"; };
 		C10E3ACC1C862C38009C77DE /* StyleGuideIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuideIO.swift; sourceTree = "<group>"; };
 		C11229361C74B34600107D5E /* TileMapIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMapIO.swift; sourceTree = "<group>"; };
 		C12BED4C1C3B270E007F83F4 /* Atlas Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Atlas Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,11 +173,16 @@
 		C14C5F331C825481004C264E /* FRContentTraversalModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRContentTraversalModule.swift; sourceTree = "<group>"; };
 		C152CBFD1C3D7DA400323B85 /* TileMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMapView.swift; sourceTree = "<group>"; };
 		C152CBFF1C3DAEFA00323B85 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		C15E6E0D1C8A70A2002B23F2 /* QQBuildFromGuideTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQBuildFromGuideTask.swift; sourceTree = "<group>"; };
+		C15E6E0F1C8B3FAA002B23F2 /* ZZBuildLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZBuildLevel.swift; sourceTree = "<group>"; };
 		C15FF2201C860ABB00CF1D85 /* FRStyleGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRStyleGuide.swift; sourceTree = "<group>"; };
 		C1756F8D1C87BC0800DBB758 /* QQVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQVariable.swift; sourceTree = "<group>"; };
 		C1756F8F1C87BF6400DBB758 /* QQTaskContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQTaskContext.swift; sourceTree = "<group>"; };
 		C1756F911C88EDB900DBB758 /* QQWorkingMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQWorkingMemory.swift; sourceTree = "<group>"; };
 		C175BCCD1C894437008DAD5A /* QQFillOutlineTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQFillOutlineTask.swift; sourceTree = "<group>"; };
+		C178E52E1C8E01D400AD753C /* ZZContentDistanceMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZContentDistanceMap.swift; sourceTree = "<group>"; };
+		C178E5301C8E144400AD753C /* ZZVisualizeDensity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZVisualizeDensity.swift; sourceTree = "<group>"; };
+		C178E5321C8E347400AD753C /* ZZOutlineComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZOutlineComponent.swift; sourceTree = "<group>"; };
 		C19D42FE1C5AB8760040C11E /* CollaboratorStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorStatusView.swift; sourceTree = "<group>"; };
 		C19D43001C5ABA3C0040C11E /* CollaboratorStatusPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorStatusPanel.swift; sourceTree = "<group>"; };
 		C19FB0351C3C288000414CFA /* TilesetIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TilesetIO.swift; path = Code/IO/TilesetIO.swift; sourceTree = "<group>"; };
@@ -436,6 +452,14 @@
 				C1756F8D1C87BC0800DBB758 /* QQVariable.swift */,
 				C1756F8F1C87BF6400DBB758 /* QQTaskContext.swift */,
 				C1756F911C88EDB900DBB758 /* QQWorkingMemory.swift */,
+				C15E6E0F1C8B3FAA002B23F2 /* ZZBuildLevel.swift */,
+				C10D9EBD1C8B6CE80050828E /* ZZAddComponent.swift */,
+				C178E5321C8E347400AD753C /* ZZOutlineComponent.swift */,
+				C10D9EBF1C8B72290050828E /* ZZFillRect.swift */,
+				C10D9EC11C8BA6000050828E /* ZZDensityMap.swift */,
+				C178E52E1C8E01D400AD753C /* ZZContentDistanceMap.swift */,
+				C178E5301C8E144400AD753C /* ZZVisualizeDensity.swift */,
+				C15E6E0D1C8A70A2002B23F2 /* QQBuildFromGuideTask.swift */,
 				C143D3CC1C8773600059B9C5 /* QQBuildComponentTask.swift */,
 				C143D3CE1C8774140059B9C5 /* QQRoughOutlineTask.swift */,
 				C175BCCD1C894437008DAD5A /* QQFillOutlineTask.swift */,
@@ -648,8 +672,11 @@
 				C1E7113A1C59C97000C90917 /* SynchronizedArray.swift in Sources */,
 				C12F212D1C7ED38C00B8BA5A /* LKLoadMapTask.swift in Sources */,
 				C1436D631C7399900024B603 /* EditorSceneInteractionController.swift in Sources */,
+				C178E5331C8E347400AD753C /* ZZOutlineComponent.swift in Sources */,
 				C13A50271C4E931900D9DF45 /* NetworkController.swift in Sources */,
 				C13116761C3B29480025BFD7 /* IntUtility.swift in Sources */,
+				C178E5311C8E144400AD753C /* ZZVisualizeDensity.swift in Sources */,
+				C15E6E101C8B3FAA002B23F2 /* ZZBuildLevel.swift in Sources */,
 				C19FB0411C3C2A7000414CFA /* Queue.swift in Sources */,
 				C1C512B71C78F90A00B952EF /* ACShapeDensityTask.swift in Sources */,
 				C14A32331C77930D000D3331 /* Odin.swift in Sources */,
@@ -675,17 +702,20 @@
 				C13116781C3B29480025BFD7 /* SKSpriteNodeUtility.swift in Sources */,
 				C13116791C3B29480025BFD7 /* UserDefaultsUtility.swift in Sources */,
 				C1CAB0E31C5BFC6200003FF2 /* IntroScene.swift in Sources */,
+				C10D9EC21C8BA6000050828E /* ZZDensityMap.swift in Sources */,
 				C19FB03B1C3C28A500414CFA /* GameViewController.swift in Sources */,
 				C1CB63111C7E97E80059342B /* LKTask.swift in Sources */,
 				C13A501B1C4E8F6D00D9DF45 /* NetKit.swift in Sources */,
 				C12F21381C8110CF00B8BA5A /* OneshotAnalysisScene.swift in Sources */,
 				C1CAB0E51C5BFCB700003FF2 /* SimpleButton.swift in Sources */,
 				C1756F921C88EDB900DBB758 /* QQWorkingMemory.swift in Sources */,
+				C178E52F1C8E01D400AD753C /* ZZContentDistanceMap.swift in Sources */,
 				C1436D611C73992F0024B603 /* EditorScene.swift in Sources */,
 				C13116751C3B29480025BFD7 /* ColorUtility.swift in Sources */,
 				C1CB630D1C7E3EB40059342B /* Loki.swift in Sources */,
 				C15FF2211C860ABB00CF1D85 /* FRStyleGuide.swift in Sources */,
 				C19FB04D1C3C2E5A00414CFA /* FileIO.swift in Sources */,
+				C15E6E0E1C8A70A2002B23F2 /* QQBuildFromGuideTask.swift in Sources */,
 				C19D42FF1C5AB8760040C11E /* CollaboratorStatusView.swift in Sources */,
 				C1C9A5D21C84F84E00D7E30D /* FRRectSimilarityModule.swift in Sources */,
 				C1756F901C87BF6400DBB758 /* QQTaskContext.swift in Sources */,
@@ -700,10 +730,12 @@
 				C143D3CB1C876BF40059B9C5 /* QQTask.swift in Sources */,
 				C19FB03A1C3C28A500414CFA /* AppDelegate.swift in Sources */,
 				C13A50611C4EC63100D9DF45 /* GameSceneInteractionController.swift in Sources */,
+				C10D9EC01C8B72290050828E /* ZZFillRect.swift in Sources */,
 				C131166B1C3B29360025BFD7 /* CollaborateScene.swift in Sources */,
 				C14C5F321C821BA6004C264E /* FRDynamicRegion.swift in Sources */,
 				C12F21321C80F37E00B8BA5A /* Fenrir.swift in Sources */,
 				C14A323C1C77A882000D3331 /* ACTaskList.swift in Sources */,
+				C10D9EBE1C8B6CE80050828E /* ZZAddComponent.swift in Sources */,
 				C10E3ACD1C862C38009C77DE /* StyleGuideIO.swift in Sources */,
 				C1D298F01C73CF5600AEFE1B /* TileSelectionPanel.swift in Sources */,
 				C14A9FCC1C76D38B00AEEE87 /* AnalysisModel.swift in Sources */,

@@ -23,6 +23,7 @@ class QQTask : QQTaskDelegate
     var context:QQTaskContext
     var canvas:QQCanvasDelegate?
     var completed:Bool
+    var success:Bool = false
     
     // This task will have ACCESS to its parent's context as well
     var parent:QQTaskDelegate?
@@ -70,13 +71,24 @@ class QQTask : QQTaskDelegate
     // Context
     //////////////////////////////////////////////////////////////////////////////////////////
     
-    func entangle(outputName:String, task:QQTask, inputName:String)
+    func prepareToReceive(receivingVariable:String, sendingTask:QQTask, sendingVariable:String)
     {
-        if let outputVariable = context.variableNamed(outputName)
+        if let sendingVar = sendingTask.context.variableNamed(sendingVariable)
         {
-            if let inputVariable = task.context.variableNamed(inputName)
+            if let receivingVar = context.variableNamed(receivingVariable)
             {
-                outputVariable.registerObserver(inputVariable)
+                sendingVar.registerObserver(receivingVar)
+            }
+        }
+    }
+    
+    func prepareToSend(sendingVariable:String, receivingTask:QQTask, receivingVariable:String)
+    {
+        if let sendingVar = context.variableNamed(sendingVariable)
+        {
+            if let receivingVar = receivingTask.context.variableNamed(receivingVariable)
+            {
+                sendingVar.registerObserver(receivingVar)
             }
         }
     }

@@ -107,4 +107,23 @@ class QQTaskContext
     {
         return inputNames.contains(name)
     }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Global Variables
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func setGlobalRect(value:TileRect) -> String
+    {
+        return QQWorkingMemory.sharedInstance.registerRect(value)
+    }
+    
+    func setGlobalAtomicMap(value:AtomicMap<Int>) -> String
+    {
+        return QQWorkingMemory.sharedInstance.registerAtomicMap(value)
+    }
+    
+    func setGlobalDensityMap(value:DensityMap) -> String
+    {
+        return QQWorkingMemory.sharedInstance.registerDensityMap(value)
+    }
 }
