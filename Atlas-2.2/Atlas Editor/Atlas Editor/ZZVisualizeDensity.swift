@@ -10,6 +10,8 @@ import Foundation
 
 class ZZVisualizeDensity : QQTask
 {
+    var initialized:Bool = false
+    
     override init()
     {
         super.init()
@@ -33,19 +35,29 @@ class ZZVisualizeDensity : QQTask
         {
             if let canvas = canvas
             {
-                let densityId = context.idForVariableNamed("density")!
-                let density = QQWorkingMemory.sharedInstance.densityMapValue(densityId)!
-                
-                for coord in density.bounds.allCoords()
+                if (!initialized)
                 {
-                    let value = density.density(coord)
-                    if (value > 0)
+                    print("~~~~~~ Visualize: Start")
+                    let densityId = context.idForVariableNamed("density")!
+                    let density = QQWorkingMemory.sharedInstance.densityMapValue(densityId)!
+                    
+                    for coord in density.bounds.allCoords()
                     {
-                        canvas.updateDensityNodeAt(coord, density:value)
+                        let value = density.density(coord)
+                        if (value > 0)
+                        {
+                            canvas.updateDensityNodeAt(coord, density:value)
+                        }
                     }
+                    
+                    let _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target:self, selector:#selector(ZZVisualizeDensity.visualUpdateComplete), userInfo:nil, repeats:false)
+                    
+                    initialized = true
                 }
-                
-                let _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target:self, selector:"visualUpdateComplete", userInfo:nil, repeats:false)
+                else
+                {
+                    // Wait...
+                }
             }
         }
     }
@@ -53,6 +65,8 @@ class ZZVisualizeDensity : QQTask
     @objc func visualUpdateComplete()
     {
         success = true
+        
+        print("~~~~~~ Visualize: Complete!")
         complete()
     }
 }

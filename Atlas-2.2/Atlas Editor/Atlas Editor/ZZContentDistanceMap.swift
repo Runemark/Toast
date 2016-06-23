@@ -83,18 +83,16 @@ class ZZContentDistanceMap : QQTask
     func expansionStage()
     {
         // Increment the current distance
-        currentDistance++
+        currentDistance += 1
         
         // Expand once
         expandedContent = expandContent(content)
         // Take just the edges
         leadingEdge = expandedContent.subtract(content)
         
-        // WARXING: Special case with no content, all "distances" will be zero
-        // Is this a problem? Well, paired with the density map, it actually WONT be a problem.
         if (leadingEdge.count == 0)
         {
-            print("~~ Distance: [Comlete]")
+            print("~~~~ Distance: [Comlete]")
             
             let distanceId = QQWorkingMemory.sharedInstance.registerDensityMap(density)
             context.initializeVariable("distance", id:distanceId)
@@ -104,7 +102,7 @@ class ZZContentDistanceMap : QQTask
         }
         else
         {
-            print("~~ Distance: Leading Edge @ \(currentDistance)")
+            print("~~~~ Distance: Leading Edge @ \(currentDistance)")
             
             for coord in leadingEdge
             {
@@ -113,6 +111,11 @@ class ZZContentDistanceMap : QQTask
             
             content = expandedContent
         }
+    }
+    
+    override func subtaskCompleted(child: QQTask)
+    {
+        super.subtaskCompleted(child)
     }
     
     func baseContent() -> Set<DiscreteTileCoord>

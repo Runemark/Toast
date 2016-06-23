@@ -34,7 +34,7 @@ class ZZDensityMap : QQTask
         ////////////////////////////////////////////////////////////
         // Output ()
         ////////////////////////////////////////////////////////////
-        context.defineOutput("density", type:QQVariableType.ATOMICMAP)
+        context.defineOutput("density", type:QQVariableType.DENSITYMAP)
     }
     
     ////////////////////////////////////////////////////////////
@@ -48,13 +48,10 @@ class ZZDensityMap : QQTask
             {
                 print("~~~~ Density: Started")
                 initializeStage()
-                
-                let clearTask = ZZClearDensity()
-                insertSubaskLast(clearTask)
             }
             else
             {
-                for _ in 1...10
+                for _ in 1...30
                 {
                     if let nextCoord = uncheckedCoordinates.dequeue()
                     {
@@ -64,18 +61,21 @@ class ZZDensityMap : QQTask
                 
                 if (uncheckedCoordinates.count == 0)
                 {
-                    print("~~~~ Density: <Complete>")
                     // ~Register~ the density
-                    
-                    let densityId = QQWorkingMemory.sharedInstance.registerDensityMap(density)
+                    let densityId = context.setGlobalDensityMap(density)
                     context.initializeVariable("density", id:densityId)
                     
                     success = true
-                    
                     complete()
+                    print("~~~~ Density: Complete")
                 }
             }
         }
+    }
+    
+    override func subtaskCompleted(child:QQTask)
+    {
+        super.subtaskCompleted(child)
     }
     
     func initializeStage()
@@ -96,7 +96,7 @@ class ZZDensityMap : QQTask
             
             initialized = true
             
-            print("~~ Density: Initialized")
+            print("~~~~ Density: Initialized")
         }
     }
     
@@ -121,7 +121,7 @@ class ZZDensityMap : QQTask
         
         while (validity)
         {
-            currentIncrement++
+            currentIncrement += 1
             
             if (validNeighborhood(center, increment:currentIncrement))
             {

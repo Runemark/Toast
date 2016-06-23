@@ -240,7 +240,7 @@ class LKTask : LKTaskDelegate
                 break
             }
             
-            tempIndex++
+            tempIndex += 1
         }
         
         if (rootIndex > -1)

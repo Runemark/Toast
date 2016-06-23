@@ -138,7 +138,7 @@ class CollaboratorStatusPanel:SKNode
                     break
                 }
                 
-                tempIndex++
+                tempIndex += 1
             }
         }
         

@@ -33,9 +33,10 @@ class ZZClearDensity : QQTask
             if let canvas = canvas
             {
                 canvas.clearDensity()
+                
+                success = true
+                complete()
             }
         }
-        
-        complete()
     }
 }

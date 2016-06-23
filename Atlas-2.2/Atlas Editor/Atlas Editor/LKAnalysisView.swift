@@ -39,6 +39,11 @@ class LKAnalysisView : SKNode, VisualDelegate
     private var regionLayer:SKNode
     ////////////////////////////////////////////////////////////
     
+    ////////////////////////////////////////////////////////////
+    // SPECIAL REGION LAYER
+    private var connectionLayer:SKNode
+    ////////////////////////////////////////////////////////////
+    
     
     ////////////////////////////////////////////////////////////
     // EFFECTS LAYERS
@@ -62,6 +67,7 @@ class LKAnalysisView : SKNode, VisualDelegate
     private var registeredMapTiles:[DiscreteTileCoord:TileView]
     private var registeredChangeIndicators:[DiscreteTileCoord:ChangeIndicator]
     private var registeredShapeDensityNodes:[DiscreteTileCoord:SKSpriteNode]
+    private var registeredConnections:[LineSegment:SKSpriteNode]
     ////////////////////////////////////////////////////////////
     
     init(window:CGSize, viewSize:CGSize, tileSize:CGSize)
@@ -84,12 +90,16 @@ class LKAnalysisView : SKNode, VisualDelegate
         regionLayer = SKNode()
         regionLayer.position = CGPointZero
         
+        connectionLayer = SKNode()
+        connectionLayer.position = CGPointZero
+        
         changeIndicatorLayer = SKNode()
         changeIndicatorLayer.position = CGPointZero
         
         registeredMapTiles = [DiscreteTileCoord:TileView]()
         registeredChangeIndicators = [DiscreteTileCoord:ChangeIndicator]()
         registeredShapeDensityNodes = [DiscreteTileCoord:SKSpriteNode]()
+        registeredConnections = [LineSegment:SKSpriteNode]()
         
         mapBounds = TileRect(left:0, right:0, up:0, down:0)
         
@@ -99,6 +109,7 @@ class LKAnalysisView : SKNode, VisualDelegate
         self.addChild(shapeDensityLayer)
         self.addChild(shapeSkeletonLayer)
         self.addChild(regionLayer)
+        self.addChild(connectionLayer)
         self.addChild(changeIndicatorLayer)
     }
     
@@ -349,6 +360,43 @@ class LKAnalysisView : SKNode, VisualDelegate
                 shapeNode.removeFromParent()
                 self.registeredShapeDensityNodes.removeValueForKey(coord)
             })
+        }
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Line Methods
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func addConnection(line:LineSegment)
+    {
+        if (line.a != line.b)
+        {
+            let position_a = screenPosForTileViewAtCoord(line.a, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
+            let position_b = screenPosForTileViewAtCoord(line.b, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
+            let midpoint = CGPointMake(CGFloat(Double(position_a.x + position_b.x) / 2.0), CGFloat(Double(position_a.y + position_b.y) / 2.0))
+            let delta_x = fabs(position_a.x - position_b.x)
+            let delta_y = fabs(position_a.y - position_b.y)
+            let distance = sqrt(pow(delta_x, 2.0) + pow(delta_y, 2.0))
+            let dy = position_a.y - midpoint.y
+            let dx = position_a.x - midpoint.x
+            let theta = atan2(dy, dx) + CGFloat(0.5*M_PI)
+            
+            let sprite = SKSpriteNode(imageNamed:"square")
+            sprite.resizeNode(1, y:distance)
+            sprite.zRotation = theta
+            sprite.position = midpoint
+            
+            connectionLayer.addChild(sprite)
+            registeredConnections[line] = sprite
+        }
+    }
+    
+    func removeConnection(line:LineSegment)
+    {
+        if let connection = registeredConnections[line]
+        {
+            connection.removeFromParent()
+            self.registeredConnections.removeValueForKey(line)
         }
     }
     

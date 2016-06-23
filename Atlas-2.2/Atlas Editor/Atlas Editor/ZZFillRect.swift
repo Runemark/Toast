@@ -17,7 +17,8 @@ class ZZFillRect : QQTask
         ////////////////////////////////////////////////////////////
         // Input ()
         ////////////////////////////////////////////////////////////
-        context.defineInput("rect", type:QQVariableType.RECT)
+        context.defineInput("outline", type:QQVariableType.RECT)
+        context.defineInput("offset", type:QQVariableType.DISCRETECOORD)
         
         ////////////////////////////////////////////////////////////
         // Output ()
@@ -33,10 +34,17 @@ class ZZFillRect : QQTask
             // Cannot proceed unless all inputs are initialized
             if (context.allInputsInitialized())
             {
-                let rectId = context.idForVariableNamed("rect")!
-                let outline = QQWorkingMemory.sharedInstance.rectValue(rectId)!
+                let outline = context.getLocalRect("outline")!
+                let offset = context.getLocalDiscreteCoord("offset")!
                 
-                for coord in outline.allCoords()
+                print(outline)
+                print(offset)
+                
+                let placedRect = outline.shift(offset)
+                
+                print(placedRect)
+                
+                for coord in placedRect.allCoords()
                 {
                     canvas.setTerrainTileAt(coord, value:1)
                 }

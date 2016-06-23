@@ -57,7 +57,7 @@ class Queue<T>
         
         last = newNode
         
-        count++
+        count += 1
     }
     
     func dequeue() -> T?
@@ -67,7 +67,7 @@ class Queue<T>
             let nextValue = next?.value
             next = next?.previous
             
-            count--
+            count -= 1
             
             return nextValue
         }

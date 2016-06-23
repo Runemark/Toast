@@ -46,16 +46,16 @@ class OneshotAnalysisScene : SKScene, ButtonResponder
         
         analysisView.swapTileset(tileset)
         
-        // Loki's SOLE PURPOSE is to create a style guide based on the level provided
-//        loki = Loki(analysisView:analysisView)
-        
         super.init(size:size)
         
         self.backgroundColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1.0)
         
         self.addChild(analysisView)
         
-        let fenrir = Fenrir(title:"Scrap001", analysisView:analysisView)
+//        Crypt001a
+        // Toy_Example_003
+        
+        let fenrir = Fenrir(title:"Crypt001a", analysisView:analysisView)
         if let styleInfo = fenrir.createStyleGuide()
         {
             print(styleInfo)

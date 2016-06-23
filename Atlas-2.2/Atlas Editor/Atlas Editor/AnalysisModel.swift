@@ -72,7 +72,7 @@ class AnalysisModel : AnalysisModelResponder
             
             if (mapActions.count == 0)
             {
-                let _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target:self, selector:"freeVisualStatus", userInfo:nil, repeats:false)
+                let _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target:self, selector:#selector(AnalysisModel.freeVisualStatus), userInfo:nil, repeats:false)
             }
         }
     }

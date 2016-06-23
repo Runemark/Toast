@@ -75,7 +75,7 @@ class Loki : LKCanvasDelegate
     func initializeRegulator()
     {
         let cognitiveSpeed = 1.0/Double(30)
-        regulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:"cognitiveCore:", userInfo:nil, repeats:true)
+        regulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:#selector(Loki.cognitiveCore(_:)), userInfo:nil, repeats:true)
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////

@@ -1,132 +1,99 @@
 //
-//  ACCalculateShapeDensityTask.swift
+//  QQBuildComponentTask.swift
 //  Atlas Editor
 //
-//  Created by Dusty Artifact on 2/20/16.
+//  Created by Dusty Artifact on 3/2/16.
 //  Copyright © 2016 Dusty Artifact. All rights reserved.
 //
 
 import Foundation
 
-enum AnalysisPhase
+class ZZRectDensityMap : QQTask
 {
-    case UNINITIALIZED, DENSITY, SKELETON_PREP, SKELETON, WAIT, RESET
-}
-
-// Analyzes the BASE LAYER and creates a density map
-class ACShapeDensityTask : ACTask
-{
-    var importantTiles:Set<Int>
-    var densityMap:DensityMap?
-    var coordinatesToInspect:Queue<DiscreteTileCoord>
+    var density:DensityMap
+    var densityBounds:TileRect
+    var uncheckedCoordinates:Queue<DiscreteTileCoord>
+    var validSet:Set<Int>
     
-    var skeletonMap:SkeletonMap
+    var waitingForVisuals:Bool = false
     
-    var phase:AnalysisPhase = AnalysisPhase.UNINITIALIZED
+    var initialized:Bool = false
     
-    init(importantTiles:Set<Int>)
+    override init()
     {
-        self.importantTiles = importantTiles
-        self.coordinatesToInspect = Queue<DiscreteTileCoord>()
-        // WARXING: BAD BOUNDS
-        self.skeletonMap = SkeletonMap(bounds:TileRect(left:0, right:0, up:0, down:0))
+        self.density = DensityMap(bounds:TileRect(left:0, right:0, up:0, down:0))
+        self.densityBounds = TileRect(left:0, right:0, up:0, down:0)
+        self.uncheckedCoordinates = Queue<DiscreteTileCoord>()
+        
+        self.validSet = Set([0])
         
         super.init()
+        
+        ////////////////////////////////////////////////////////////
+        // Input ()
+        ////////////////////////////////////////////////////////////
+        context.defineInput("rect", type:QQVariableType.RECT)
+        
+        ////////////////////////////////////////////////////////////
+        // Output ()
+        ////////////////////////////////////////////////////////////
+        context.defineOutput("density", type:QQVariableType.DENSITYMAP)
     }
     
+    ////////////////////////////////////////////////////////////
+    // Task
     override func apply()
     {
-        if let canvas = canvas
+        // Cannot proceed unless all inputs are initialized
+        if (context.allInputsInitialized())
         {
-            if (phase == .UNINITIALIZED)
+            if (!initialized)
             {
-                canvas.dimMapLayer()
+                let rect = context.getLocalRect("rect")!
                 
-                let bounds = canvas.modelMapLayerBounds()
-                densityMap = DensityMap(bounds:bounds)
-                let orderedCoordinateList = bounds.orderedCoordinateList()
-                let orderedFilteredCoordinateList = orderedCoordinateList.filter({importantTiles.contains(canvas.terrainValueAt($0))})
-                for coord in orderedFilteredCoordinateList
+                densityBounds = rect
+                density = DensityMap(bounds:densityBounds)
+                
+                for x in densityBounds.left...densityBounds.right
                 {
-                    coordinatesToInspect.enqueue(coord)
+                    for y in densityBounds.down...densityBounds.up
+                    {
+                        let coord = DiscreteTileCoord(x:x, y:y)
+                        uncheckedCoordinates.enqueue(coord)
+                    }
                 }
                 
-                phase = .DENSITY
+                initialized = true
             }
-            else if (phase == .DENSITY)
+            else
             {
-                for _ in 1...10
+                for _ in 1...30
                 {
-                    if let nextCoord = coordinatesToInspect.dequeue()
+                    if let nextCoord = uncheckedCoordinates.dequeue()
                     {
                         recalculateDensityAt(nextCoord)
                     }
                 }
                 
-                if coordinatesToInspect.count == 0
+                if (uncheckedCoordinates.count == 0)
                 {
-                    phase = .SKELETON_PREP
-                    canvas.hideMapLayer()
+                    // ~Register~ the density
+                    let densityId = context.setGlobalDensityMap(density)
+                    context.initializeVariable("density", id:densityId)
                 }
-            }
-            else if (phase == .SKELETON_PREP)
-            {
-                // Check the strengths, from highest to lowest
-                for strength in densityMap!.orderedStrengths()
-                {
-                    // Check all coordinates with that strength
-                    let coordinatesOfStrength = densityMap!.registry[strength]!
-                    for coord in coordinatesOfStrength
-                    {
-                        coordinatesToInspect.enqueue(coord)
-                    }
-                }
-                
-                phase = .SKELETON
-            }
-            else if (phase == .SKELETON)
-            {
-                for _ in 1...5
-                {
-                    if let nextCoord = coordinatesToInspect.dequeue()
-                    {
-                        recalculateSkeletonAt(nextCoord)
-                    }
-                }
-                
-                if coordinatesToInspect.count == 0
-                {
-                    complete()
-                }
-            }
-        }
-    }
-    
-    func recalculateSkeletonAt(coord:DiscreteTileCoord)
-    {
-        if let canvas = canvas
-        {
-            let node = SkeletonNode(center:coord, strength:densityMap!.density(coord))
-            if skeletonMap.addNode(node)
-            {
-                canvas.addSkeletonNode(node)
             }
         }
     }
     
     func recalculateDensityAt(coord:DiscreteTileCoord)
     {
-        if let canvas = canvas
+        // Expand radially until no further match is found
+        let maxIncrement = maxValidIncrement(coord, startingIncrement:0)
+        let maxRadius = cornerIncrementToRadius(maxIncrement)
+        
+        if (maxRadius > 0)
         {
-            // Expand radially until no further match is found
-            let maxIncrement = maxValidIncrement(coord, startingIncrement:0)
-            let maxRadius = cornerIncrementToRadius(maxIncrement)
-            
-            if (maxRadius > 0)
-            {
-                densityMap!.setDensity(coord, density:maxRadius)
-                canvas.setDensityAt(coord, density:maxRadius)
-            }
+            density.setDensity(coord, density:maxRadius)
         }
     }
     
@@ -252,13 +219,10 @@ class ACShapeDensityTask : ACTask
     {
         var validity = false
         
-        if (canvas!.modelMapLayerBounds().contains(coord))
+        if (densityBounds.contains(coord))
         {
-            let value = canvas!.terrainValueAt(coord)
-            if importantTiles.contains(value)
-            {
-                validity = true
-            }
+            // In a solid rect, we don't care about the content values (so long as it's within bounds)
+            validity = true
         }
         
         return validity

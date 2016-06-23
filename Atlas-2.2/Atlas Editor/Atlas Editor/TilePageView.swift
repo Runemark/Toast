@@ -84,7 +84,7 @@ class TilePageView : SKNode, ButtonResponder
                 break
             }
         
-            currentTileIndex++
+            currentTileIndex += 1
         }
     }
     

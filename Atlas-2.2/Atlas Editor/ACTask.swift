@@ -119,7 +119,7 @@ class ACTask : ACTaskDelegate
                 break
             }
             
-            tempIndex++
+            tempIndex += 1
         }
         
         if (rootIndex > -1)

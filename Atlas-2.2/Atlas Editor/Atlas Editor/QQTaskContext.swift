@@ -131,4 +131,57 @@ class QQTaskContext
     {
         return QQWorkingMemory.sharedInstance.registerDiscreteCoord(value)
     }
+    
+    
+    
+    func getGlobalRect(id:String) -> TileRect?
+    {
+        return QQWorkingMemory.sharedInstance.rectValue(id)
+    }
+    
+    func getGlobalDensityMap(id:String) -> DensityMap?
+    {
+        return QQWorkingMemory.sharedInstance.densityMapValue(id)
+    }
+    
+    func getGlobalDiscreteCoord(id:String) -> DiscreteTileCoord?
+    {
+        return QQWorkingMemory.sharedInstance.discreteCoordValue(id)
+    }
+    
+    func getLocalRect(name:String) -> TileRect?
+    {
+        var value:TileRect?
+        
+        if let id = idForVariableNamed(name)
+        {
+            value = getGlobalRect(id)
+        }
+        
+        return value
+    }
+    
+    func getLocalDensityMap(name:String) -> DensityMap?
+    {
+        var value:DensityMap?
+        
+        if let id = idForVariableNamed(name)
+        {
+            value = getGlobalDensityMap(id)
+        }
+        
+        return value
+    }
+    
+    func getLocalDiscreteCoord(name:String) -> DiscreteTileCoord?
+    {
+        var value:DiscreteTileCoord?
+        
+        if let id = idForVariableNamed(name)
+        {
+            value = getGlobalDiscreteCoord(id)
+        }
+        
+        return value
+    }
 }

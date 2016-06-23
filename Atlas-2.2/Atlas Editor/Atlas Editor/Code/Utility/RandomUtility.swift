@@ -56,7 +56,7 @@ func randIndexWithProbabilities(probabilities:[Double]) -> Int
             break
         }
         
-        randomIndex++
+        randomIndex += 1
     }
     
     return randomIndex
@@ -94,6 +94,54 @@ public extension Array
             return nil
         }
     }
+    
+    func randomSubset(subsetCount:Int) -> Array
+    {
+        var subset = Array<Element>()
+        
+        if (subsetCount >= self.count || subsetCount < 0)
+        {
+            subset = Array(self)
+        }
+        else
+        {
+            var indexes = [Int]()
+            
+            for index in 0..<self.count
+            {
+                indexes.append(index)
+            }
+            
+            indexes.shuffle()
+            
+            var subset = Array<Element>()
+            for i in 0..<subsetCount
+            {
+                let nextIndex = indexes[i]
+                subset.append(self[nextIndex])
+            }
+        }
+        
+        return subset
+    }
+    
+    // Fisher-Yates (fast and uniform) shuffle
+    mutating func shuffle()
+    {
+        if count < 2 {
+            return
+        }
+        for i in 0..<(count - 1)
+        {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            
+            let i_element = self[i]
+            let j_element = self[j]
+            
+            self[i] = j_element
+            self[j] = i_element
+        }
+    }
 }
 
 public extension Set
@@ -102,5 +150,37 @@ public extension Set
     {
         let array = Array(self)
         return array.randomElement()
+    }
+    
+    func randomSubset(subsetCount:Int) -> Set<Element>
+    {
+        var subset = Set<Element>()
+        
+        if (subsetCount >= self.count || subsetCount < 0)
+        {
+            subset = Set(self)
+        }
+        else
+        {
+            let array = Array(self)
+            
+            var indexes = [Int]()
+            
+            for index in 0..<self.count
+            {
+                indexes.append(index)
+            }
+            
+            indexes.shuffle()
+            
+            subset = Set<Element>()
+            for i in 0..<subsetCount
+            {
+                let nextIndex = indexes[i]
+                subset.insert(array[nextIndex])
+            }
+        }
+        
+        return subset
     }
 }

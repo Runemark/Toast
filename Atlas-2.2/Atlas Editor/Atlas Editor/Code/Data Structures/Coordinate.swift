@@ -26,7 +26,7 @@ struct TileCoord:Hashable
     
     var hashValue:Int
     {
-            return "(\(x), \(y))".hashValue
+        return "(\(x), \(y))".hashValue
     }
 }
 
@@ -60,10 +60,103 @@ struct DiscreteTileCoord:Hashable
         return DiscreteTileCoord(x:x+1, y:y)
     }
     
+    func neighborhood() -> Set<DiscreteTileCoord>
+    {
+        var neighbors = Set<DiscreteTileCoord>()
+        for relative_x in -1...1
+        {
+            for relative_y in -1...1
+            {
+                if !(relative_x == 0 && relative_y == 0)
+                {
+                    let absoluteCoord = DiscreteTileCoord(x:x+relative_x, y:y+relative_y)
+                    neighbors.insert(absoluteCoord)
+                }
+            }
+        }
+        
+        return neighbors
+    }
+    
+    func directNeighborhood() -> Set<DiscreteTileCoord>
+    {
+        return Set([self.up(), self.down(), self.left(), self.right()])
+    }
+    
+    func closestNeighborToPoint(point:DiscreteTileCoord) -> DiscreteTileCoord
+    {
+        var closestDistance = 100000
+        
+        var closestNeighbor = self
+        for neighbor in neighborhood()
+        {
+            let distance = Int(floor(neighbor.absDistance(point)))
+            if (distance < closestDistance)
+            {
+                closestDistance = distance
+                closestNeighbor = neighbor
+            }
+        }
+        
+        return closestNeighbor
+    }
+    
+    func farthestNeighborToPoint(point:DiscreteTileCoord) -> DiscreteTileCoord
+    {
+        var farthestDistance = -100000
+        
+        var farthestNeighbor = self
+        for neighbor in neighborhood()
+        {
+            let distance = Int(floor(neighbor.absDistance(point)))
+            if (distance > farthestDistance)
+            {
+                farthestDistance = distance
+                farthestNeighbor = neighbor
+            }
+        }
+        
+        return farthestNeighbor
+    }
+    
+    func absDistance(other:DiscreteTileCoord) -> Double
+    {
+        return sqrt( pow(Double(other.x - x), 2.0) + pow(Double(other.y - y), 2.0) )
+    }
+    
+    func squareDistance(other:DiscreteTileCoord) -> Int
+    {
+        let abs_x = abs(other.x - x)
+        let abs_y = abs(other.y - y)
+        return max(abs_x, abs_y)
+    }
+    
     var hashValue:Int
     {
-            return "(\(x), \(y))".hashValue
+        return "(\(x), \(y))".hashValue
     }
+}
+
+struct LineSegment:Hashable
+{
+    var a:DiscreteTileCoord
+    var b:DiscreteTileCoord
+    
+    var hashValue:Int
+    {
+        let ab = (a.x > b.x) || (a.x == b.x && a.y > b.y)
+        return (ab) ? "(\(a.x), \(a.y))(\(b.x), \(b.y))".hashValue : "(\(b.x), \(b.y))(\(a.x), \(a.y))".hashValue
+    }
+    
+    func length() -> Double
+    {
+        return a.absDistance(b)
+    }
+}
+
+func ==(lhs:LineSegment, rhs:LineSegment) -> Bool
+{
+    return (lhs.a == rhs.a && lhs.b == rhs.b) || (lhs.a == rhs.b && lhs.b == rhs.a)
 }
 
 struct TileRectSize
@@ -72,12 +165,17 @@ struct TileRectSize
     var height:Int
 }
 
-struct TileRect
+struct TileRect:Equatable,Hashable
 {
     var left:Int
     var right:Int
     var up:Int
     var down:Int
+    
+    var hashValue:Int
+    {
+        return "(\(left), \(right), \(up), \(down))".hashValue
+    }
     
     func contains(coord:DiscreteTileCoord) -> Bool
     {
@@ -256,6 +354,28 @@ struct TileRect
         let random_y = randIntBetween(down, stop:up)
         return DiscreteTileCoord(x:random_x, y:random_y)
     }
+    
+    func shift(offset:DiscreteTileCoord) -> TileRect
+    {
+        return TileRect(left:left + offset.x, right:right + offset.x, up:up + offset.y, down:down + offset.y)
+    }
+    
+    func intersectsWith(other:TileRect) -> Bool
+    {
+        return !((left > other.right) || (right < other.left) || (down > other.up) || (up < other.down))
+    }
+    
+    func adjacentTo(other:TileRect) -> Bool
+    {
+        let x_adjacent = (left == other.right+1 || right == other.left-1) && !(down >= other.up+1 || up <= other.down-1)
+        let y_adjacent = (down == other.up+1 || up == other.down-1) && !(left >= other.right+1 || right <= other.left-1)
+        return x_adjacent || y_adjacent
+    }
+}
+
+func ==(lhs:TileRect, rhs:TileRect) -> Bool
+{
+    return (lhs.left == rhs.left && lhs.right == rhs.right && lhs.up == rhs.up && lhs.down == rhs.down)
 }
 
 

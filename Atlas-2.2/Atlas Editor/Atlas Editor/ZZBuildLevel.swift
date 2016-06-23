@@ -68,10 +68,10 @@ class ZZBuildLevel : QQTask
     {
         print("BuildLevel: Evaluate stage")
         
-        if (componentCount == 3)
-        {
-            complete()
-        }
+//        if (componentCount == 3)
+//        {
+//            complete()
+//        }
     }
     
     func toggleStage()
@@ -90,7 +90,11 @@ class ZZBuildLevel : QQTask
     {
         if (child.success)
         {
-            componentCount++
+            componentCount += 1
+        }
+        else
+        {
+            complete()
         }
         
         super.subtaskCompleted(child)

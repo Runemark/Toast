@@ -58,7 +58,7 @@ class Odin : IntelligentAgentDelegate, ACCanvasDelegate
     func initializeRegulators()
     {
         let cognitiveSpeed = 1.0/Double(30)
-        cognitionRegulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:"cognitiveCore:", userInfo:nil, repeats:true)
+        cognitionRegulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:#selector(Odin.cognitiveCore(_:)), userInfo:nil, repeats:true)
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -106,7 +106,7 @@ class Odin : IntelligentAgentDelegate, ACCanvasDelegate
             tasks.insertSubtaskLast(analysisTask)
         }
         
-        hackCount++
+        hackCount += 1
         
     }
     

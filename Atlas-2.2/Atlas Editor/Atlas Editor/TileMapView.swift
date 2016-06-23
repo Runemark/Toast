@@ -25,10 +25,21 @@ class TileMapView : SKNode, DirectMapObserver
     var tileViewRect:TileRect?
     //////////////////////////////////////////////////////////////////////////////////////////
     
-    ////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
     // SHAPE DENSITY LAYER
     var shapeDensityLayer:SKNode
-    ////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // FLOW LAYER
+    var flowNodeLayer:SKNode
+    var flowLineLayer:SKNode
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // LAYOUT LAYER
+    var componentLayoutLayer:SKNode
+    //////////////////////////////////////////////////////////////////////////////////////////
     
     //////////////////////////////////////////////////////////////////////////////////////////
     // Model
@@ -46,6 +57,9 @@ class TileMapView : SKNode, DirectMapObserver
     var registeredChangeIndicators:[DiscreteTileCoord:ChangeIndicator]
     
     var registeredDensityNodes:[DiscreteTileCoord:SKSpriteNode]
+    var registeredFlowNodes:[DiscreteTileCoord:FlowNodeView]
+    var registeredFlowLines:[LineSegment:SKSpriteNode]
+    var registeredComponentLayoutNodes:[DiscreteTileCoord:ComponentNodeView]
     //////////////////////////////////////////////////////////////////////////////////////////
     
     init(window:CGSize, viewSize:CGSize, tileSize:CGSize)
@@ -71,11 +85,19 @@ class TileMapView : SKNode, DirectMapObserver
         shapeDensityLayer = SKNode()
         shapeDensityLayer.position = CGPointZero
         
+        flowNodeLayer = SKNode()
+        flowLineLayer = SKNode()
+        
+        componentLayoutLayer = SKNode()
+        
         registeredBaseTiles = [DiscreteTileCoord:TileView]()
         registeredStackedTiles = [DiscreteTileCoord:TileView]()
         registeredHeightTiles = [DiscreteTileCoord:TileView]()
         registeredChangeIndicators = [DiscreteTileCoord:ChangeIndicator]()
         registeredDensityNodes = [DiscreteTileCoord:SKSpriteNode]()
+        registeredFlowNodes = [DiscreteTileCoord:FlowNodeView]()
+        registeredFlowLines = [LineSegment:SKSpriteNode]()
+        registeredComponentLayoutNodes = [DiscreteTileCoord:ComponentNodeView]()
         
         mapBounds = TileRect(left:0, right:0, up:0, down:0)
         
@@ -86,6 +108,9 @@ class TileMapView : SKNode, DirectMapObserver
         self.addChild(heightTileLayer)
         self.addChild(changeIndicatorLayer)
         self.addChild(shapeDensityLayer)
+        self.addChild(flowLineLayer)
+        self.addChild(flowNodeLayer)
+        self.addChild(componentLayoutLayer)
         
         // Equivalent of a 4x view (where a 3x is the maximum zoom)
         let boundWidth = (window.width - viewBoundSize.width)/2.0
@@ -149,8 +174,7 @@ class TileMapView : SKNode, DirectMapObserver
         {
             removeChangeIndicator(oldIndicator, coord:coord)
         }
-        
-//        let attributionColor = UIColor(red:1.0, green:0.0, blue:0.0, alpha:1.0)
+
         let changeIndicator = ChangeIndicator(tileSize:tileSize, color:color)
         changeIndicator.position = screenPosForTileViewAtCoord(coord, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
         
@@ -167,6 +191,178 @@ class TileMapView : SKNode, DirectMapObserver
     {
         indicator.removeFromParent()
         registeredChangeIndicators.removeValueForKey(coord)
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Component Layout Drawing/Updating
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func createComponentNode(center:DiscreteTileCoord) -> ComponentNodeView
+    {
+        let componentNodeSprite = ComponentNodeView(tileSize:tileSize)
+        componentNodeSprite.position = screenPosForTileViewAtCoord(center, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
+        
+        return componentNodeSprite
+    }
+    
+    func addComponentNodeAt(center:DiscreteTileCoord)
+    {
+        if let _ = registeredComponentLayoutNodes[center]
+        {
+            
+        }
+        else
+        {
+            let componentSprite = createComponentNode(center)
+            componentLayoutLayer.addChild(componentSprite)
+            registeredComponentLayoutNodes[center] = componentSprite
+        }
+    }
+    
+    func removeComponentNodeAt(center:DiscreteTileCoord)
+    {
+        if let componentNode = registeredComponentLayoutNodes[center]
+        {
+            registeredComponentLayoutNodes.removeValueForKey(center)
+            componentNode.removeFromParent()
+        }
+    }
+    
+    func clearLayout()
+    {
+        for (center, _) in registeredComponentLayoutNodes
+        {
+            removeComponentNodeAt(center)
+        }
+    }
+    
+    func drawLayout(layout:ComponentLayout)
+    {
+        clearLayout()
+        for center in layout.allCenters()
+        {
+            addComponentNodeAt(center)
+        }
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Flow Drawing/Updating
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func addFlowNodeAt(node:FlowNode)
+    {
+        let coord = node.center
+//        let radius = node.radius
+        
+        if let _ = registeredFlowNodes[coord]
+        {
+            // Do nothing, flow node already exists here
+        }
+        else
+        {
+            let flowSprite = createFlowNode(coord, diameter:node.radius)
+            flowNodeLayer.addChild(flowSprite)
+            registeredFlowNodes[coord] = flowSprite
+        }
+    }
+    
+    func removeFlowNodeAt(coord:DiscreteTileCoord)
+    {
+        if let flowSprite = registeredFlowNodes[coord]
+        {
+            registeredFlowNodes.removeValueForKey(coord)
+            flowSprite.removeFromParent()
+        }
+    }
+    
+    func moveFlowNode(from:DiscreteTileCoord, to:DiscreteTileCoord)
+    {
+        if let flowSprite = registeredFlowNodes[from]
+        {
+            let newPosition = screenPosForTileViewAtCoord(to, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
+            flowSprite.position = newPosition
+        }
+        else
+        {
+//            addFlowNodeAt()
+        }
+    }
+    
+    func clearFlow()
+    {
+        for (coord, _) in registeredFlowNodes
+        {
+            removeFlowNodeAt(coord)
+        }
+        
+        for (line, _) in registeredFlowLines
+        {
+            removeConnection(line)
+        }
+    }
+    
+    func drawFlow(flowMap:FlowMap)
+    {
+        var connectionsToAdd = Set<LineSegment>()
+        for (_, node) in flowMap.nodes
+        {
+            addFlowNodeAt(node)
+            for child in node.connections
+            {
+                let connection = LineSegment(a:node.center, b:child.center)
+                connectionsToAdd.insert(connection)
+            }
+        }
+        
+        for connection in connectionsToAdd
+        {
+            addConnection(connection)
+        }
+    }
+    
+    func createFlowNode(coord:DiscreteTileCoord, diameter:Int) -> FlowNodeView
+    {
+        let flowSprite = FlowNodeView(diameter:diameter, tileSize:tileSize)
+        flowSprite.position = screenPosForTileViewAtCoord(coord, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
+        
+        return flowSprite
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Line Methods
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func addConnection(line:LineSegment)
+    {
+        if (line.a != line.b)
+        {
+            let position_a = screenPosForTileViewAtCoord(line.a, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
+            let position_b = screenPosForTileViewAtCoord(line.b, cameraInWorld:cameraInWorld, cameraOnScreen:cameraOnScreen, tileSize:tileSize)
+            let midpoint = CGPointMake(CGFloat(Double(position_a.x + position_b.x) / 2.0), CGFloat(Double(position_a.y + position_b.y) / 2.0))
+            let delta_x = fabs(position_a.x - position_b.x)
+            let delta_y = fabs(position_a.y - position_b.y)
+            let distance = sqrt(pow(delta_x, 2.0) + pow(delta_y, 2.0))
+            let dy = position_a.y - midpoint.y
+            let dx = position_a.x - midpoint.x
+            let theta = atan2(dy, dx) + CGFloat(0.5*M_PI)
+            
+            let sprite = SKSpriteNode(imageNamed:"square")
+            sprite.resizeNode(1, y:distance)
+            sprite.zRotation = theta
+            sprite.position = midpoint
+            
+            flowLineLayer.addChild(sprite)
+            registeredFlowLines[line] = sprite
+        }
+    }
+    
+    func removeConnection(line:LineSegment)
+    {
+        if let connection = registeredFlowLines[line]
+        {
+            connection.removeFromParent()
+            self.registeredFlowLines.removeValueForKey(line)
+        }
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////

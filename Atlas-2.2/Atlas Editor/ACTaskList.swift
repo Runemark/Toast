@@ -70,7 +70,7 @@ class ACTaskList : ACTaskDelegate
                 break
             }
             
-            tempIndex++
+            tempIndex += 1
         }
         
         return index

@@ -58,7 +58,7 @@ class PanController
                 index = tempIndex
                 break
             }
-            tempIndex++
+            tempIndex += 1
         }
         
         return index
@@ -86,7 +86,7 @@ class PanController
     // Generates a UIPanGestureRecognizer object to be attached to the main view
     func generatePanRecognizer() -> UIPanGestureRecognizer
     {
-        let panRecognizer = UIPanGestureRecognizer(target:self, action:"handlePan:")
+        let panRecognizer = UIPanGestureRecognizer(target:self, action:#selector(PanController.handlePan(_:)))
         panRecognizer.minimumNumberOfTouches = 2
         panRecognizer.maximumNumberOfTouches = 2
         

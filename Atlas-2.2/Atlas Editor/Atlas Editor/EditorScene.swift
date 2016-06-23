@@ -44,13 +44,15 @@ class EditorScene : SKScene, EditorSceneInteractionControllerDelegate, TileSelec
         
 //        TileMapIO().removeModel("Scrap001")
         
-        if let importedMap = TileMapIO().importModel("Scrap004")
+        let title = "Toy_Example_003"
+        
+        if let importedMap = TileMapIO().importModel(title)
         {
             map = importedMap
         }
         else
         {
-            map = TileMap(bounds:TileRect(left:0, right:3, up:6, down:0), title:"Scrap004")
+            map = TileMap(bounds:TileRect(left:0, right:11, up:11, down:0), title:title)
             map.swapTilesetData(rustTilesetData)
             map.setAllTerrainTiles(1, directly:true)
             TileMapIO().exportModel(map)
@@ -129,7 +131,7 @@ class EditorScene : SKScene, EditorSceneInteractionControllerDelegate, TileSelec
                 let touchLocation = touch.locationInNode(mapView)
                 let wrappedLocation = NSValue(CGPoint:touchLocation)
                 // Give it a small delay, then activate if no gesture has been activated in the meantime
-                _ = NSTimer.scheduledTimerWithTimeInterval(0.075, target:self, selector:Selector("delayedTouch:"), userInfo:["touchLocation":wrappedLocation], repeats:false)
+                _ = NSTimer.scheduledTimerWithTimeInterval(0.075, target:self, selector:#selector(EditorScene.delayedTouch(_:)), userInfo:["touchLocation":wrappedLocation], repeats:false)
             }
         }
     }

@@ -22,18 +22,17 @@ protocol IntelligentAgentDelegate
 
 protocol QQCanvasDelegate
 {
-    // Inquisitive
     func canvasBounds() -> TileRect
     func atomicValueAt(coord:DiscreteTileCoord) -> Int
-    
-    func componentRectCount() -> Int
-    
-    // Declarative
     func setTerrainTileAt(coord:DiscreteTileCoord, value:Int)
     func updateDensityNodeAt(coord:DiscreteTileCoord, density:Int)
     func clearDensity()
-    
     func registerComponentRect(rect:TileRect)
+    func componentRectCount() -> Int
+    func addFlowNodeAt(coord:DiscreteTileCoord, diameter:Int)
+    func redrawFlowMap(flowMap:FlowMap)
+    func addFlowLineAt(line:LineSegment)
+    func redrawComponentLayout(layout:ComponentLayout)
 }
 
 class Atlas : QQCanvasDelegate
@@ -64,18 +63,12 @@ class Atlas : QQCanvasDelegate
         self.cognitionRegulator = NSTimer()
         self.actionRegulator = NSTimer()
         
-        self.task = ZZBuildLevel()
+//        self.task = ZZBuildLevel()
+        self.task = GenerateRandomShape()
         
         self.components = [TileRect]()
         
         task.registerCanvas(self)
-        
-//        if (guide.components.count > 0)
-//        {
-////            let component = guide.components.first!
-////            let id = QQWorkingMemory.sharedInstance.registerComponent(component)
-////            task.initializeInput("component", id:id)
-//        }
         
         self.initializeRegulators()
     }
@@ -87,11 +80,11 @@ class Atlas : QQCanvasDelegate
     
     func initializeRegulators()
     {
-        let cognitiveSpeed = 1.0/Double(2)
+        let cognitiveSpeed = 1.0/Double(8)
         let actionSpeed = 1.0/Double(60)
         
-        cognitionRegulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:"cognitiveCore:", userInfo:nil, repeats:true)
-        actionRegulator = NSTimer.scheduledTimerWithTimeInterval(actionSpeed, target:self, selector:"actionCore:", userInfo:nil, repeats:true)
+        cognitionRegulator = NSTimer.scheduledTimerWithTimeInterval(cognitiveSpeed, target:self, selector:#selector(Atlas.cognitiveCore(_:)), userInfo:nil, repeats:true)
+        actionRegulator = NSTimer.scheduledTimerWithTimeInterval(actionSpeed, target:self, selector:#selector(Atlas.actionCore(_:)), userInfo:nil, repeats:true)
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -207,5 +200,38 @@ class Atlas : QQCanvasDelegate
     func componentRectCount() -> Int
     {
         return components.count
+    }
+    
+    func addFlowNodeAt(coord:DiscreteTileCoord, diameter:Int)
+    {
+//        if let mapView = mapView
+//        {
+//            mapView.addFlowNodeAt(coord, diameter:diameter)
+//        }
+    }
+    
+    func redrawFlowMap(flowMap:FlowMap)
+    {
+        if let mapView = mapView
+        {
+            mapView.clearFlow()
+            mapView.drawFlow(flowMap)
+        }
+    }
+    
+    func addFlowLineAt(line:LineSegment)
+    {
+        if let mapView = mapView
+        {
+            mapView.addConnection(line)
+        }
+    }
+    
+    func redrawComponentLayout(layout:ComponentLayout)
+    {
+        if let mapView = mapView
+        {
+            mapView.drawLayout(layout)
+        }
     }
 }

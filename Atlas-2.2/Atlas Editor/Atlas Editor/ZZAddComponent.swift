@@ -29,15 +29,35 @@ class ZZAddComponent : QQTask
     {
         if (context.allInputsInitialized())
         {
-            print("~~ AddComponent: Apply")
-            
             let outlineTask = ZZOutlineComponent()
             let placementTask = ZZPlaceOutline()
+            let fillTask = ZZFillRect()
             
             outlineTask.prepareToSend("outline", receivingTask:placementTask, receivingVariable:"outline")
+            outlineTask.prepareToSend("outline", receivingTask:fillTask, receivingVariable:"outline")
+            placementTask.prepareToSend("offset", receivingTask:fillTask, receivingVariable:"offset")
             
             insertSubaskLast(outlineTask)
             insertSubaskLast(placementTask)
+            insertSubaskLast(fillTask)
+        }
+    }
+    
+    override func subtaskCompleted(child:QQTask)
+    {
+        if child is ZZPlaceOutline
+        {
+            success = child.success
+            
+            if (!success)
+            {
+                complete()
+            }
+        }
+        else if child is ZZFillRect
+        {
+            success = true
+            complete()
         }
     }
 }

@@ -45,7 +45,7 @@ class FRDensityModule
         // Expand radially until no further match is found
         let maxIncrement = maxValidIncrement(coord, startingIncrement:0)
         let maxRadius = cornerIncrementToRadius(maxIncrement)
-        
+            
         if (maxRadius > 0)
         {
             density.setDensity(coord, density:maxRadius)
@@ -61,7 +61,7 @@ class FRDensityModule
         
         while (validity)
         {
-            currentIncrement++
+            currentIncrement += 1
             
             if (validNeighborhood(center, increment:currentIncrement))
             {

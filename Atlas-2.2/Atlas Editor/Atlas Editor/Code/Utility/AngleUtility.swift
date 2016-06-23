@@ -9,6 +9,13 @@
 import Foundation
 import SpriteKit
 
+func angleBetweenCoords(p1:DiscreteTileCoord, p2:DiscreteTileCoord) -> Double
+{
+    let cgPoint1 = CGPointMake(CGFloat(p1.x), CGFloat(p1.y))
+    let cgPoint2 = CGPointMake(CGFloat(p2.x), CGFloat(p2.y))
+    return angleBetweenPoints(cgPoint1, p2:cgPoint2)
+}
+
 func angleBetweenPoints(p1:CGPoint, p2:CGPoint) -> Double
 {
     let deltaX = Double(p2.x - p1.x)
@@ -22,6 +29,14 @@ func angleBetweenPoints(p1:CGPoint, p2:CGPoint) -> Double
     }
     
     return angleInDegrees
+}
+
+func angleBetweenPoints(p1:DiscreteTileCoord, p2:DiscreteTileCoord) -> Double
+{
+    let point_1 = CGPointMake(CGFloat(p1.x), CGFloat(p1.y))
+    let point_2 = CGPointMake(CGFloat(p2.x), CGFloat(p2.y))
+    
+    return angleBetweenPoints(point_1, p2:point_2)
 }
 
 func angleDifference(a1:Double, a2:Double) -> Double
